@@ -1,0 +1,18 @@
+@keyframes beat {
+    0% {
+        transform: translate(-50%,-50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%,-50%) scale(.9);
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+}
