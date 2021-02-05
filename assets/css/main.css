@@ -12,6 +12,10 @@
     list-style: none;
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
     background: url(/assets/icons/Swatch.svg);
     overflow: hidden;
@@ -94,13 +98,9 @@ body {
     padding: .5rem 1rem;
 }
 
-.mac_menu > li:hover {
+.menu-item:hover {
     color: var(--white);
     background: var(--black);
-}
-
-.mac_menu > li:focus {
-    outline: none;
 }
 
 #logo {
@@ -113,6 +113,7 @@ body {
     transform: translateY(.4rem);
 }
 
+header:focus
 #logo:hover {
     fill: var(--white);
 }
@@ -189,11 +190,9 @@ body {
     background: var(--black);
 }
 
-
-
-
 /* Main content */
 main {
+    min-height: 90vh;
     display: flex;
     justify-content: space-between;
 }
