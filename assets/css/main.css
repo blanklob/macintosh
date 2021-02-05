@@ -1,19 +1,40 @@
 @import 'normalize.css' screen;
 @import 'animations.css' screen;
+@import 'variables.css' screen;
+
+/* font */
 @import url(//db.onlinewebfonts.com/c/1a243397695904f6f56e490ffd77a9cb?family=ChicagoFLF);
-
-
-:root {
-    /* color palette */
-    --white: #fff;
-    --black: #000;
-}
 
 body {
     padding: 0;
     margin: 0;
     background: url(/assets/icons/Swatch.svg);
+    overflow: hidden;
 }
+
+/* Reusables */
+.v-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vh-align {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.noselect {
+    cursor: default;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
 
 /* Splash screen */
 .splash_screen {
@@ -25,10 +46,6 @@ body {
 
 .mac_loader {
     background-image: url(/assets/icons/Mac_loader.svg);
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%,-50%);
     width: 4.7rem;
     height: 6rem;
     background-size: contain;
@@ -39,15 +56,12 @@ body {
 }
 
 .welcome {
-    opacity: 0;
     position: absolute;
+    opacity: 0;
     background-color: var(--white);
     border: .8px solid var(--black);
     width: 38rem;
     height: 15rem;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%,-50%);
     animation: show 1.5s forwards;
     animation-delay: 4s;
     animation-direction: alternate-reverse;
@@ -82,4 +96,57 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Header */
+.container {
+    margin: 0 auto;
+    max-width: 96%;
+}
+.mac_bar {
+    background-color: var(--white);
+    width: 100vw;
+    height: 2rem;
+    border-bottom: 2px solid var(--black);
+}
+
+#logo {
+    width: 1.1rem;
+    padding: 0 1.3rem;
+}
+
+#logo > svg {
+    position: relative;
+    transform: translateY(.4rem);
+}
+
+#logo:hover {
+    fill: var(--white);
+    background-color: var(--black);
+}
+
+.mac_menu {
+    display: flex;
+    font-family: 'ChicagoFLF', sans-serif;
+    font-size: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mac_menu > li {
+    padding: .5rem 1rem;
+}
+
+.mac_menu > li:hover {
+    color: var(--white);
+    background: var(--black);
+}
+
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*  */
 
