@@ -4,3 +4,13 @@
     --black: #000;
 }
 
+
+/* Typo */
+@font-face {font-family: "ChicagoFLF";
+    src: url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.eot"); 
+    src: url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.eot?#iefix") format("embedded-opentype"), 
+    url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.woff2") format("woff2"), 
+    url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.woff") format("woff"), 
+    url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.ttf") format("truetype"), 
+    url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.svg#ChicagoFLF") format("svg"); 
+}

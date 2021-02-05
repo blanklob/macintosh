@@ -2,10 +2,6 @@
 @import 'animations.css' screen;
 @import 'variables.css' screen;
 
-/* font */
-@import url(//db.onlinewebfonts.com/c/1a243397695904f6f56e490ffd77a9cb?family=ChicagoFLF);
-
-
 * {
     padding: 0;
     margin: 0;
@@ -50,7 +46,6 @@ body {
     height: 15rem;
     animation: show 1.5s forwards;
     animation-delay: 4s;
-    animation-direction: alternate-reverse;
 }
 
 .welcome_screen {
