@@ -9,15 +9,12 @@
 * {
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
 body {
     background: url(/assets/icons/Swatch.svg);
     overflow: hidden;
-}
-
-ul, body {
-    list-style: none;
 }
 
 
@@ -41,7 +38,7 @@ ul, body {
 }
 
 .welcome {
-    position: absolute;
+    position: relative;
     opacity: 0;
     background-color: var(--white);
     border: .8px solid var(--black);
@@ -53,12 +50,9 @@ ul, body {
 }
 
 .welcome_screen {
-    position: relative;
+    position: absolute;
     width: 98%;
     height: 96%;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%,-50%);
     text-align: center;
     vertical-align: middle;
     background-color: var(--white);
@@ -81,16 +75,32 @@ ul, body {
     background-repeat: no-repeat;
 }
 
+
 /* Header */
-.container {
-    margin: 0 auto;
-    max-width: 96%;
-}
 .mac_bar {
     background-color: var(--white);
     width: 100vw;
     height: 2rem;
     border-bottom: 2px solid var(--black);
+    font-family: 'ChicagoFLF', sans-serif;
+    font-size: 1rem;
+}
+
+.mac_menu {
+    display: flex;  
+}
+
+.mac_menu > li:not(:first-child) {
+    padding: .5rem 1rem;
+}
+
+.mac_menu > li:hover {
+    color: var(--white);
+    background: var(--black);
+}
+
+.mac_menu > li:focus {
+    outline: none;
 }
 
 #logo {
@@ -103,38 +113,28 @@ ul, body {
     transform: translateY(.4rem);
 }
 
-#logo:focus {
-    outline: none;
+#logo:hover {
     fill: var(--white);
-    background-color: var(--black);
-    transition: all 0.2s;
 }
 
-.menu {
-    font-family: 'ChicagoFLF', sans-serif;
-}
-
-.dropdown.logo {
-    position: absolute;
+.dropdown {
     display: none;
-    background: var(--white);
+    position: absolute;
+    top: 2.2rem;
     z-index: 9;
+    background: var(--white);
     border-width: 0 2px 2px 2px;
     border-style: solid;
     border-color: var(--black);
 }
 
-.dropdown.logo ul {
-    margin: .8rem 0;
+/* Logo menu */
+.dropdown.logo {
+    left: 0;
 }
 
-.dropdown.logo li {
-    padding: .4rem 8rem .4rem 1.5rem;
-}
-
-.dropdown.logo li:hover, .menu-title:hover {
-    color: var(--white);
-    background: var(--black);
+.dropdown.logo li:not(:first-child){
+    padding: .4rem 8rem .5rem 1.5rem;
 }
 
 .menu-title {
@@ -142,30 +142,44 @@ ul, body {
     padding: 1rem 8rem 1rem 1.5rem;
 }
 
-.mac_menu {
-    display: flex;
-    font-family: 'ChicagoFLF', sans-serif;
-    font-size: 1rem;
+/* end logo menu */
+
+.dropdown.file {
+    left: 3.7rem;
 }
 
-.mac_menu > li {
-    padding: .5rem 1rem;
+.dropdown.view {
+    left: 11.7rem;
 }
 
-.mac_menu > li:focus {
-    outline: none;
+.dropdown.edit {
+    left: 7.65rem;
+}
+
+.dropdown.special {
+    left: 16.4rem;
+}
+
+
+.dropdown li:last-child {
+    margin-bottom: .5rem;
+}
+
+.dropdown li:nth-child(2) {
+    margin-top: .5rem;
+}
+
+.dropdown li:hover, .menu-title:hover {
     color: var(--white);
     background: var(--black);
 }
 
 
+/* Main content */
 main {
     display: flex;
     justify-content: space-between;
 }
-
-
-/*  */
 
 
 
@@ -198,4 +212,9 @@ main {
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 96%;
 }

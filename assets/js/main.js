@@ -10,16 +10,16 @@ macIcon.addEventListener('animationend', () => {
 })
 
 // Dropdown menu
-const logoMenu = document.querySelector('.dropdown.logo');
-const logo = document.getElementById('logo')
+// const items = document.getElementsByClassName('menu-item');
+// const dropdownMenus = document.getElementsByClassName('dropdown');
 
-window.document.addEventListener('click', () => {
-    console.log(document.activeElement);
-    
-    if(document.activeElement === logo) {
-        logoMenu.classList.add('d-block');
-    } else if(document.activeElement !== logo 
-        || document.activeElement !== logoMenu) {
-        logoMenu.classList.remove('d-block');
-    };
-});
+// window.document.addEventListener('click', () => {
+//     for (const item of items) {
+//         for(let i=0; i < dropdownMenus.length; i++){
+//             if(document.activeElement === item && dropdownMenus[i].classList.contains('logo')) {
+//                 dropdownMenus[i].classList.toggle('d-block');
+//             };
+//         };    
+//     };
+// });
+

@@ -11,41 +11,40 @@
     <div id="splash" class="splash_screen noselect">
         <div class="mac_loader vh-align"></div>
         <div class="welcome vh-align">
-            <div class="welcome_screen">
+            <div class="welcome_screen vh-align">
                 <div class="welcome_illustration"></div>
                 <span>Welcome to Macintosh</span>
             </div>
         </div>
     </div>
     <header class="mac_bar noselect">
-        <nav class="v-align container">
+        <nav role="navigation" class="v-align container">
             <ul class="mac_menu">
-                <li tabindex="1" id="logo">
+                <li class="menu-item" tabindex="1" id="logo">
                     <svg viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.86104 2.55483C9.3623 1.95654 9.70995 1.13997 9.70995 0.315311C9.70995 0.202122 9.70187 0.0889338 9.67762 0C8.87721 0.0323396 7.90702 0.533603 7.32491 1.21273C6.87216 1.73017 6.45174 2.55483 6.45174 3.37948C6.45174 3.50884 6.46791 3.63012 6.48408 3.67054C6.53259 3.67863 6.61344 3.6948 6.69429 3.6948C7.42193 3.6948 8.32744 3.2097 8.86104 2.55483ZM9.43507 3.86458C8.22233 3.86458 7.24406 4.6003 6.61344 4.6003C5.9424 4.6003 5.06923 3.91309 4.01819 3.91309C2.02122 3.91309 0 5.56241 0 8.667C0 10.6074 0.74381 12.6529 1.67357 13.9707C2.46589 15.0864 3.16119 16 4.15563 16C5.15008 16 5.58666 15.3451 6.80748 15.3451C8.06064 15.3451 8.33552 15.9838 9.43507 15.9838C10.5184 15.9838 11.238 14.9894 11.9171 14.0111C12.6852 12.8873 13.0005 11.7959 13.0167 11.7393C12.952 11.7231 10.8742 10.8742 10.8742 8.50531C10.8742 6.45174 12.5073 5.53007 12.5963 5.4573C11.5291 3.91309 9.88782 3.86458 9.43507 3.86458Z"/>
-                    </svg>                     
+                    </svg>  
+                    <ul class="dropdown logo noselect menu">
+                        <li class="menu-title">About the finder...</li>
+                        <li>Alarm Clock</li>
+                        <li>Calculator</li>
+                        <li>Chooser</li>
+                        <li>Control Panel</li>
+                        <li>Key Caps</li>
+                        <li>Note Pad</li>
+                        <li>Puzzle</li>
+                        <li>Scrapbook</li>
+                    </ul>              
                 </li>
-                <li tabindex="2">File</li>
-                <li tabindex="3">Edit</li>
-                <li tabindex="4">View</li>
-                <li tabindex="5">Special</li>
+                <li class="menu-item" tabindex="2">File</li>
+                <li class="menu-item" tabindex="3">Edit</li>
+                <li class="menu-item" tabindex="4">View</li>
+                <li class="menu-item" tabindex="5">Special</li>
             </ul>
-        </nav>
+        </nav>        
     </header>
-    <main role="main" class="container">
-        <nav class="dropdown logo noselect">
-            <div class="menu menu-title">About the finder...</div>
-            <ul class="mac-apps menu">
-                <li>Alarm Clock</li>
-                <li>Calculator</li>
-                <li>Chooser</li>
-                <li>Control Panel</li>
-                <li>Key Caps</li>
-                <li>Note Pad</li>
-                <li>Puzzle</li>
-                <li>Scrapbook</li>
-            </ul>
-        </nav>   
+    <main role="main" class="container"> 
+        
     </main>
 </body>
 </html>
