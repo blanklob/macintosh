@@ -5,34 +5,19 @@
 /* font */
 @import url(//db.onlinewebfonts.com/c/1a243397695904f6f56e490ffd77a9cb?family=ChicagoFLF);
 
-body {
+
+* {
     padding: 0;
     margin: 0;
+}
+
+body {
     background: url(/assets/icons/Swatch.svg);
     overflow: hidden;
 }
 
-/* Reusables */
-.v-align {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.vh-align {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.noselect {
-    cursor: default;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
+ul, body {
+    list-style: none;
 }
 
 
@@ -118,25 +103,57 @@ body {
     transform: translateY(.4rem);
 }
 
-#logo:hover {
+#logo:focus {
+    outline: none;
     fill: var(--white);
     background-color: var(--black);
+    transition: all 0.2s;
+}
+
+.menu {
+    font-family: 'ChicagoFLF', sans-serif;
+}
+
+.dropdown.logo {
+    position: absolute;
+    display: none;
+    background: var(--white);
+    z-index: 9;
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    border-color: var(--black);
+}
+
+.dropdown.logo ul {
+    margin: .8rem 0;
+}
+
+.dropdown.logo li {
+    padding: .4rem 8rem .4rem 1.5rem;
+}
+
+.dropdown.logo li:hover, .menu-title:hover {
+    color: var(--white);
+    background: var(--black);
+}
+
+.menu-title {
+    border-bottom: 1px dotted var(--black);
+    padding: 1rem 8rem 1rem 1.5rem;
 }
 
 .mac_menu {
     display: flex;
     font-family: 'ChicagoFLF', sans-serif;
     font-size: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .mac_menu > li {
     padding: .5rem 1rem;
 }
 
-.mac_menu > li:hover {
+.mac_menu > li:focus {
+    outline: none;
     color: var(--white);
     background: var(--black);
 }
@@ -150,3 +167,35 @@ main {
 
 /*  */
 
+
+
+/* Reusables */
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.v-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vh-align {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.noselect {
+    cursor: default;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}

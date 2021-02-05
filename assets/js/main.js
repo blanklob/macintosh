@@ -9,5 +9,17 @@ macIcon.addEventListener('animationend', () => {
     });
 })
 
-// Time counter
+// Dropdown menu
+const logoMenu = document.querySelector('.dropdown.logo');
+const logo = document.getElementById('logo')
 
+window.document.addEventListener('click', () => {
+    console.log(document.activeElement);
+    
+    if(document.activeElement === logo) {
+        logoMenu.classList.add('d-block');
+    } else if(document.activeElement !== logo 
+        || document.activeElement !== logoMenu) {
+        logoMenu.classList.remove('d-block');
+    };
+});
