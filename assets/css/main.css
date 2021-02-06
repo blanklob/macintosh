@@ -200,7 +200,7 @@ main {
 }
 
 .icon {
-    /* position: absolute; */
+    position: absolute;
     z-index: 9;
     display: flex;
     flex-direction: column;
@@ -216,18 +216,22 @@ main {
 
 .icon.folder {
     top: 3rem;
+    left: 1rem;
 }
 
 .icon.trash {
-    top: 10rem;
+    top: 30rem;
+    left: 2rem;
 }
 
 .icon.system {
-    top: 20rem;
+    top: 21rem;
+    left: -1rem;
 }
 
 .icon.computer {
-    top: 30rem;
+    top: 11rem;
+    left: 1rem;
 }
 
 
