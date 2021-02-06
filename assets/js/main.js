@@ -26,4 +26,60 @@ main.addEventListener('click', () => {
     }
 });
 
+// Making icons draggable
+(() => {
+    let icon = document.querySelector('.icon.system');
+    let pos1 = 0, pos2 = 0;
+    icon.onmousedown = (e) => {
+        icon.focus();
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = (e) => {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        };
+        document.onmousemove = (e) => {
+            e = e || window.event;
+        e.preventDefault();
+
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
+        icon.style.left = `${icon.offsetLeft - pos1}px`;
+        };
+    };
+})();
+
+(() => {
+    let icon = document.querySelector('.icon.trash');
+    let pos1 = 0, pos2 = 0;
+    icon.onmousedown = (e) => {
+        icon.focus();
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = (e) => {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        };
+        document.onmousemove = (e) => {
+            e = e || window.event;
+        e.preventDefault();
+
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
+        icon.style.left = `${icon.offsetLeft - pos1}px`;
+        };
+    };
+})();
 

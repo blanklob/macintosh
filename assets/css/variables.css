@@ -2,15 +2,28 @@
     /* color palette */
     --white: #fff;
     --black: #000;
+    --Primary: "ChicagoFLF";
+    --Secondary: "Geneva";
 }
 
 
 /* Typo */
-@font-face {font-family: "ChicagoFLF";
+@font-face {
+    font-family: "ChicagoFLF";
     src: url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.eot"); 
     src: url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.eot?#iefix") format("embedded-opentype"), 
     url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.woff2") format("woff2"), 
     url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.woff") format("woff"), 
     url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.ttf") format("truetype"), 
     url("http://db.onlinewebfonts.com/t/1a243397695904f6f56e490ffd77a9cb.svg#ChicagoFLF") format("svg"); 
+}
+
+@font-face {
+    font-family: "Geneva"; 
+    src: url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.eot"); 
+    src: url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.eot?#iefix") format("embedded-opentype"), 
+    url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.woff2") format("woff2"), 
+    url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.woff") format("woff"), 
+    url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.ttf") format("truetype"), 
+    url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.svg#Geneva") format("svg"); 
 }

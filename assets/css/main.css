@@ -62,7 +62,7 @@ body {
     position: absolute;
     top: 45%;
     left: 30%;
-    font-family: 'ChicagoFLF', sans-serif;
+    font-family: var(--Primary), sans-serif;
     font-size: 22px;
 }
 
@@ -81,7 +81,7 @@ body {
     width: 100vw;
     height: 2rem;
     border-bottom: 2px solid var(--black);
-    font-family: 'ChicagoFLF', sans-serif;
+    font-family: var(--Primary), sans-serif;
     font-size: 1rem;
 }
 
@@ -187,9 +187,62 @@ header:focus
 
 /* Main content */
 main {
-    min-height: 90vh;
+    min-height: 95vh;
+}
+
+.desktop-icons {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 15%;
+    min-height: 95vh;
+    float: right;
+}
+
+.icon {
+    /* position: absolute; */
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.icon:focus > .icon-title {
+    background: var(--black);
+    color: var(--white);
+}
+
+.icon.folder {
+    top: 3rem;
+}
+
+.icon.trash {
+    top: 10rem;
+}
+
+.icon.system {
+    top: 20rem;
+}
+
+.icon.computer {
+    top: 30rem;
+}
+
+
+.icon > svg {
+    margin: auto;
+    z-index: 10;
+}
+
+.icon-title {
+    margin-top: .1rem;
+    padding: .3rem .5rem .1rem .5rem;
+    background: var(--white);
+    font-family: var(--Secondary), sans-serif;
+    font-size: 1.1rem;
 }
 
 
