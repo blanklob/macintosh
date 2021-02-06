@@ -33,7 +33,7 @@ body {
     background-repeat: no-repeat;
     animation-name: beat;
     animation-duration: 2s;
-    animation-iteration-count: 3;
+    animation-iteration-count: infinite;
 }
 
 .welcome {
@@ -239,11 +239,71 @@ main {
 }
 
 .icon-title {
-    margin-top: .1rem;
-    padding: .3rem .5rem .1rem .5rem;
     background: var(--white);
+    padding: .3rem .5rem .1rem .5rem;
+    margin-top: .1rem;
     font-family: var(--Secondary), sans-serif;
     font-size: 1.1rem;
+}
+
+/* Window and tabs */
+.window {
+    display: flex;
+    margin-top: 5rem;
+    flex-direction: column;
+    background: var(--white);
+    font-family: var(--Primary), sans-serif;
+    border: 2px solid var(--black);
+}
+
+.window.trash {
+    height: 20rem;
+    width: 25rem;
+}
+
+.window-header {
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-content: center;
+    height: 7%;
+    width: 100%;
+    border-bottom: 2px solid var(--black);
+}
+
+.window-bars {  
+    width: 100%;
+    margin: 0 .2rem;
+}
+
+.window-bars hr {
+    border-top: 1px solid var(--black);
+    margin: 1px;
+}
+
+.window-title {
+    background: var(--white);
+    padding: 0rem .5rem;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.window-close_btn {
+    position: absolute;
+    left: 3%;
+    top: 1px;
+    border: 1px solid var(--black);
+    background: var(--white);
+    width: 1rem;
+    height: 1rem;
+}
+
+.window-body {
+    height: 90%;
+    width: 100%;
+
 }
 
 
