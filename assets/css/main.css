@@ -169,15 +169,15 @@ header:focus
 }
 
 .dropdown.view {
-    left: 11rem;
+    left: 11.7rem;
 }
 
 .dropdown.edit {
-    left: 7.35rem;
+    left: 7.65rem;
 }
 
 .dropdown.special {
-    left: 15.2rem;
+    left: 16.4rem;
 }
 
 .dropdown li:hover, .menu-title:hover {
