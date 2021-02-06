@@ -16,6 +16,10 @@ body {
     overflow: hidden;
 }
 
+.squares_pattern {
+    background: url(/assets/icons/Squares.svg);
+}
+
 
 /* Splash screen */
 .splash_screen {

@@ -191,3 +191,21 @@ closeTrash.onmousedown = (e) => {
         };
     };
 })();
+
+// Full screen mode
+const fullScreen = document.getElementById('full-screen');
+fullScreen.addEventListener('click', (e) => {
+    document.documentElement.requestFullscreen().then(()=>{
+        fullScreen.innerText = "Remove Full Screen";
+        fullScreen.addEventListener('click', (e) => {
+            document.exitFullscreen();
+            fullScreen.innerText = "Enter Full Screen";
+        });
+    });
+});
+
+// Desktop Pattern
+const pattern = document.getElementById('desktop-pattern');
+pattern.onmousedown = (e) => {
+    document.body.classList.toggle('squares_pattern');
+};
