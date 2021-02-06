@@ -33,7 +33,7 @@ body {
     background-repeat: no-repeat;
     animation-name: beat;
     animation-duration: 2s;
-    animation-iteration-count: 2;
+    animation-iteration-count: 3;
 }
 
 .welcome {
@@ -43,8 +43,8 @@ body {
     border: .8px solid var(--black);
     width: 38rem;
     height: 15rem;
-    animation: show 1.5s forwards;
-    animation-delay: 4s;
+    animation: show 2s forwards;
+    animation-delay: 6s;
 }
 
 .welcome_screen {

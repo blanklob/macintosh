@@ -7,7 +7,7 @@ macIcon.addEventListener('animationend', () => {
     welcome.addEventListener('animationend', () => {
         document.getElementById('splash').remove();
     });
-})
+});
 
 // Dropdown menu
 const items = document.querySelectorAll('.mac_menu > li');
