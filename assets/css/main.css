@@ -118,7 +118,7 @@ header:focus
     display: none;
     position: absolute;
     top: 2.2rem;
-    z-index: 9;
+    z-index: 10;
     background: var(--white);
     border-width: 0 2px 2px 2px;
     border-style: solid;
@@ -199,7 +199,7 @@ main {
 
 .icon {
     position: absolute;
-    z-index: 9;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     max-width: fit-content;
@@ -235,7 +235,6 @@ main {
 
 .icon > svg {
     margin: auto;
-    z-index: 10;
 }
 
 .icon-title {
@@ -248,15 +247,19 @@ main {
 
 /* Window and tabs */
 .window {
+    visibility: hidden;
     display: flex;
-    margin-top: 5rem;
+    position: absolute;
     flex-direction: column;
     background: var(--white);
     font-family: var(--Primary), sans-serif;
     border: 2px solid var(--black);
+    z-index: 2;
 }
 
 .window.trash {
+    top: 30%;
+    left: 30%;
     height: 20rem;
     width: 25rem;
 }
