@@ -43,8 +43,6 @@ body {
     border: .8px solid var(--black);
     width: 38rem;
     height: 15rem;
-    animation: show 2s forwards;
-    animation-delay: 6s;
 }
 
 .welcome_screen {

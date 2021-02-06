@@ -1,12 +1,14 @@
 // Splash page
 const welcome = document.querySelector('.welcome');
 const macIcon = document.querySelector('.mac_loader');
-
-macIcon.addEventListener('animationend', () => {
-    macIcon.remove();
-    welcome.addEventListener('animationend', () => {
+window.addEventListener("load", function(event) {
+    setTimeout(function() {
+        macIcon.remove();
+        welcome.classList.add('anim-show');
+        welcome.addEventListener('animationend', () => {
         document.getElementById('splash').remove();
-    });
+        console.log('docloaded');
+    });}, 2000);  
 });
 
 // Dropdown menu

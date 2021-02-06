@@ -16,3 +16,7 @@
         opacity: 0.9;
     }
 }
+
+.anim-show {
+    animation: show 2s forwards;
+}
