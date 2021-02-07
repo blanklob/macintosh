@@ -7,7 +7,6 @@ window.addEventListener("load", function(event) {
         welcome.classList.add('anim-show');
         welcome.addEventListener('animationend', () => {
         document.getElementById('splash').remove();
-        console.log('docloaded');
     });}, 2000);  
 });
 
@@ -34,9 +33,6 @@ class App {
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
         this.closeBtn = document.querySelector('.close_btn.' + selector);
-        console.log(this.icon);
-        console.log(this.window);
-        console.log(this.closeBtn);
     }
 
     // drag just like in jquery ;)
