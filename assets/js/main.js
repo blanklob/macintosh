@@ -29,168 +29,83 @@ main.addEventListener('click', () => {
 });
 
 // Making icons draggable
-(() => {
-    let icon = document.querySelector('.icon.system');
-    let pos1 = 0, pos2 = 0;
-    icon.onmousedown = (e) => {
-        icon.focus();
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = (e) => {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        };
-        document.onmousemove = (e) => {
-            e = e || window.event;
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
-        icon.style.left = `${icon.offsetLeft - pos1}px`;
-        };
-    };
-})();
-
-(() => {
-    let icon = document.querySelector('.icon.trash');
-    let pos1 = 0, pos2 = 0;
-    icon.onmousedown = (e) => {
-        icon.focus();
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = (e) => {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        };
-        document.onmousemove = (e) => {
-            e = e || window.event;
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
-        icon.style.left = `${icon.offsetLeft - pos1}px`;
-        };
-    };
-})();
-
-(() => {
-    let icon = document.querySelector('.icon.folder');
-    let pos1 = 0, pos2 = 0;
-    icon.onmousedown = (e) => {
-        icon.focus();
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = (e) => {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        };
-        document.onmousemove = (e) => {
-            e = e || window.event;
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
-        icon.style.left = `${icon.offsetLeft - pos1}px`;
-        };
-    };
-})();
-
-(() => {
-    let icon = document.querySelector('.icon.computer');
-    let pos1 = 0, pos2 = 0;
-    icon.onmousedown = (e) => {
-        icon.focus();
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = (e) => {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        };
-        document.onmousemove = (e) => {
-            e = e || window.event;
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
-        icon.style.left = `${icon.offsetLeft - pos1}px`;
-        };
-    };
-})();
-
-
-// Working with windows
-const trashIcon = document.querySelector('.icon.trash');
-const trashWin = document.querySelector('.window.trash');
-const closeTrash = document.querySelector('.window.trash .window-close_btn');
-
-trashIcon.ondblclick = (e) => {
-    if(trashWin.style.visibility === "visible") {
-        trashWin.classList.add('anim-bounce');
-        setTimeout(function(){
-            trashWin.classList.remove('anim-bounce');
-        },2000);
-    } else {
-        trashWin.style.visibility = "visible";
+class App {
+    constructor(selector){
+        this.icon = document.getElementById(selector);
+        this.window = document.querySelector('.window.' + selector);
+        this.closeBtn = document.querySelector('.close_btn.' + selector);
+        console.log(this.icon);
+        console.log(this.window);
+        console.log(this.closeBtn);
     }
-};
 
-closeTrash.onmousedown = (e) => {
-    console.log('closed');
-    trashWin.style.visibility = "hidden";      
-};
-
-
-(() => {
-    let icon = document.querySelector('.window');
-    let pos1 = 0, pos2 = 0;
-    icon.onmousedown = (e) => {
-        icon.focus();
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = (e) => {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        };
-        document.onmousemove = (e) => {
+    // drag just like in jquery ;)
+    drag(el) {
+        let pos1 = 0, pos2 = 0, pos3, pos4;
+        el.onmousedown = (e) => {
+            el.focus();
             e = e || window.event;
-        e.preventDefault();
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = (e) => {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            };
+            document.onmousemove = (e) => {
+                e = e || window.event;
+                e.preventDefault();
 
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
 
-        icon.style.top = icon.offsetTop < 0 ? "0" : `${icon.offsetTop - pos2}px`;
-        icon.style.left = `${icon.offsetLeft - pos1}px`;
+                el.style.top = el.offsetTop < 0 ? "0" : `${el.offsetTop - pos2}px`;
+                el.style.left = `${el.offsetLeft - pos1}px`;
+            };
         };
     };
-})();
+
+    // Show el window when it's clicked
+    showWindow(){
+        this.icon.ondblclick = (e) => {
+            if(this.window.style.visibility === "visible") {
+                this.window.classList.add('anim-bounce');
+                setTimeout(function(){
+                    this.window.classList.remove('anim-bounce');
+                },2000);
+            } else {
+                this.window.style.visibility = "visible";
+            }
+        };
+    };
+
+    // Close the el window when btn close is clicked
+    closeWindow(){
+        this.closeBtn.onmousedown = (e) => {
+            this.window.style.visibility = "hidden";      
+        };
+    };
+
+    run(){
+        this.drag(this.icon);
+        this.window ? this.drag(this.window) : {};
+        this.window ? this.showWindow() : {};
+        this.window ? this.closeWindow() : {};
+    }
+
+};
+
+trash = new App('trash');
+computer = new App('computer');
+system = new App('system');
+folder = new App('folder');
+
+trash.run();
+computer.run();
+system.run();
+folder.run();
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
@@ -209,3 +124,4 @@ const pattern = document.getElementById('desktop-pattern');
 pattern.onmousedown = (e) => {
     document.body.classList.toggle('squares_pattern');
 };
+

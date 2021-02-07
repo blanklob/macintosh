@@ -297,7 +297,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
 }
-.window-close_btn {
+.close_btn {
     position: absolute;
     left: 3%;
     top: 1px;

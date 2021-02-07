@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- Seo & Copyright Stuff -->
     <title>Project Macintosh | Experience the Classic 1984 Macintosh.</title>
     <meta name="description" content="Check out how deos Computers User Interface look like back in the 80s, all in your Web Browser.">
     <meta name="keywords" content="Macintosh, Classic UI, Mac, Computer">
     <link rel="icon" type="image/png" href="assets/icons/favicon.png"/>
+    <link rel="apple-touch-icon" href="assets/icons/favicon.png"/>
     <link rel="canonical" href="https://macintosh.netlify.app/">
-    <meta name=robots content="index,follow">    
     <meta name="author" content="Youness ID BAKKASSE">
-    <meta name="copyright" content="Youness ID BAKKASSE">
-    <meta name="revised" content="06/02/2021">
     <meta name="theme-color" content="#ffffff">  
+    <!-- Preload css assets -->
+    <link rel="preload" as="style" href="assets/css/normalize.css">
+    <link rel="preload" as="style" href="assets/css/main.css">
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@projectmacintosh">
@@ -55,7 +57,7 @@
                         <li class="menu-title">About the finder...</li>
                         <li>Alarm Clock</li>
                         <li>Calculator</li>
-                        <li>Chooser</li>
+                        <li>Snake</li>
                         <li>Control Panel</li>
                         <li>Key Caps</li>
                         <li>Note Pad</li>
@@ -98,7 +100,7 @@
         <div class="container noselect">
             <section class="desktop-icons">
                 <!-- Floppy Icon -->
-                <figure class="icon system" tabindex="3">
+                <figure id="system" class="icon system" tabindex="3">
                     <svg width="55" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.5 46.3475H43.5C44.6046 46.3475 45.5 45.4521 45.5 44.3475V8.23414C45.5 7.77527 45.3422 7.33034 45.0531 6.97401L40.8062 1.73986C40.4264 1.27182 39.8559 1 39.2531 1H2.5C1.39543 1 0.5 1.89543 0.5 3V44.3475C0.5 45.4521 1.39543 46.3475 2.5 46.3475Z" fill="white" stroke="black"/>
                         <path d="M6.5882 47V29.7518C6.5882 28.6472 7.48363 27.7518 8.5882 27.7518H37.9411C39.0457 27.7518 39.9411 28.6472 39.9411 29.7518V47" stroke="black"/>
@@ -108,7 +110,7 @@
                     <figcaption class="icon-title">System Software</figcaption>
                 </figure>
                 <!-- Computer Icon -->
-                <figure class="icon computer" tabindex="4">
+                <figure id="computer" class="icon computer" tabindex="4">
                     <svg width="55" viewBox="0 0 37 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="0.5" width="35" height="39" rx="1.5" fill="white" stroke="black"/>
                         <rect x="5" y="4.5" width="27" height="20" rx="1.5" fill="white" stroke="black"/>
@@ -119,7 +121,7 @@
                     <figcaption class="icon-title">Computer</figcaption>
                 </figure>
                 <!-- Folder Icon -->
-                <figure class="icon folder" tabindex="5">
+                <figure id="folder" class="icon folder" tabindex="5">
                     <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
                         <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
@@ -127,7 +129,7 @@
                     <figcaption class="icon-title">My Nudes</figcaption>
                 </figure>
                 <!-- Trash Icon -->
-                <figure class="icon trash" tabindex="2" >
+                <figure id="trash" class="icon trash" tabindex="2" >
                     <svg width="50" viewBox="0 0 32 46"  fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="12.5" y="0.5" width="8" height="1.93617" fill="white" stroke="black"/>
                         <rect x="0.5" y="2.45744" width="31" height="2.91489" fill="white" stroke="black"/>
@@ -140,10 +142,10 @@
                     <figcaption class="icon-title">Trash</figcaption>
                 </figure>
             </section>
-            <section class="window trash noselect">
+            <section class="trash window noselect">
                 <div class="window-header">
                     <span class="window-title">Trash</span>
-                    <button class="window-close_btn"></button>
+                    <button class="trash close_btn"></button>
                     <div class="window-bars">
                         <hr><hr><hr><hr><hr><hr>
                     </div>
