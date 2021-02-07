@@ -1,5 +1,5 @@
-@import 'animations.css' screen;
-@import 'variables.css' screen;
+@import 'animations.css';
+@import 'variables.css';
 
 * {
     padding: 0;
@@ -268,12 +268,33 @@ main {
     width: 25rem;
 }
 
+.window.computer {
+    top: 40%;
+    left: 40%;
+    height: 20rem;
+    width: 20rem;
+}
+
+.window.system {
+    top: 45%;
+    left: 45%;
+    height: 30rem;
+    width: 20rem;
+}
+
+.window.folder {
+    top: 25%;
+    left: 25%;
+    height: 10rem;
+    width: 10rem;
+}
+
 .window-header {
     position: relative;
-    margin: auto;
+    margin-top: .3rem;
     display: flex;
     align-content: center;
-    height: 7%;
+    height: 1.4rem;
     width: 100%;
     border-bottom: 2px solid var(--black);
 }
@@ -296,6 +317,7 @@ main {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: fit-content;
 }
 .close_btn {
     position: absolute;
@@ -310,43 +332,7 @@ main {
 .window-body {
     height: 90%;
     width: 100%;
-
 }
 
 
 
-/* Reusables */
-.d-none {
-    display: none !important;
-}
-
-.d-block {
-    display: block !important;
-}
-
-.v-align {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.vh-align {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.noselect {
-    cursor: default;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 96%;
-}

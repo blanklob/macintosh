@@ -27,3 +27,39 @@
     url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.ttf") format("truetype"), 
     url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.svg#Geneva") format("svg"); 
 }
+
+/* Reusables */
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.v-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vh-align {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.noselect {
+    cursor: default;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 96%;
+}

@@ -1,40 +1,24 @@
+/* Declaring animations */
 @keyframes beat {
-    0% {
-        transform: translate(-50%,-50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%,-50%) scale(.95);
-    }
+    0% {transform: translate(-50%,-50%) scale(1);}
+    50% {transform: translate(-50%,-50%) scale(.95);}
 }
 
 @keyframes show {
-    100% {
-        opacity: 1;
-    }
-
-    10% {
-        opacity: 0.9;
-    }
+    100% {opacity: 1;}
+    10% {opacity: 0.9;}
 }
 
 @keyframes bounce {
-    50% {
-        transform: scale(1.04);
-    }
+    50% {transform: scale(1.04); }
 }
 
 @keyframes hide {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(0);
-    }
+    from {transform: scale(1);}
+    to {transform: scale(0);}
 }
 
-
-
+/* Assigning animations */
 .anim-show {
     animation: show 2s forwards;
 }
