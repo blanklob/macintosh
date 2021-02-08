@@ -190,7 +190,10 @@ header:focus
 main {
     min-height: 95vh;
 }
-
+.test {
+    position: absolute;
+    top: 20rem;
+}
 .desktop-icons {
     position: relative;
     display: flex;
@@ -301,14 +304,25 @@ main {
 }
 
 .window.note-pad {
-    height: 30rem;
-    width: 25rem;
+    height: 27rem;
+    width: 23rem;
 }
 
 .note-pad_article {
     text-align: left;
-    margin: 1rem;
+    margin: 1.2rem 1rem;
     font-family: var(--Secondary);
+    font-size: 1.2rem;
+}
+
+.note-pad-bars {
+    width: 100%;
+    
+}
+
+.note-pad-bars hr {
+    margin: 3px 0;
+    border-top: 1px solid var(--black);
 }
 
 .window.alarm {
@@ -362,7 +376,8 @@ main {
 
 .window-body {
     text-align: center;
-    height: 90%;
+    overflow: hidden;
+    height: 92%;
     width: 100%;
     margin: .3rem 0;
 }

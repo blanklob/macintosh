@@ -40,7 +40,7 @@ class App {
     // drag just like in jquery ;)
     drag(el) {
         let pos1 = 0, pos2 = 0, pos3, pos4;
-        el.onmousedown = (e) => {
+        el.addEventListener('mousedown', function handleMouseDown(e) { 
             el.focus();
             e = e || window.event;
             e.preventDefault();
@@ -62,7 +62,13 @@ class App {
                 el.style.top = el.offsetTop < 0 ? "0" : `${el.offsetTop - pos2}px`;
                 el.style.left = `${el.offsetLeft - pos1}px`;
             };
-        };
+
+            // Apperently inputs dont work while listening to mousedown event 
+            // So I will have to delete it for now 
+            if(el.classList.contains('note-pad')) {
+                el.removeEventListener("mousedown", handleMouseDown); 
+            };
+        });
     };
 
     // Show el window when it's clicked
@@ -71,9 +77,9 @@ class App {
         this.icon.addEventListener(eve, () => {
             if(this.window.style.display === "block") {
                 this.window.classList.add('anim-bounce');
-                setTimeout(function(){
+                setTimeout(() => {
                     this.window.classList.remove('anim-bounce');
-                },2000);
+                }, 2000);
             } else {
                 this.window.style.display = "block";
                 if(!(this.closeBtn)){
@@ -124,7 +130,6 @@ folder.run();
 finder.run();
 alarm.run();
 notePad.run();
-
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');

@@ -51,7 +51,6 @@
 }
 
 .noselect {
-    cursor: default;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
     -moz-user-select: none; 
@@ -66,4 +65,13 @@
 
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.fd-row {
+    flex-direction: column;
+    justify-content: space-between;
 }
