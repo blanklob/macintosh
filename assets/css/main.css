@@ -289,6 +289,13 @@ main {
     width: 10rem;
 }
 
+.window.credit {
+    top: 25%;
+    left: 25%;
+    height: 20rem;
+    width: 30rem;
+}
+
 .window-header {
     position: relative;
     margin-top: .3rem;

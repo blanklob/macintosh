@@ -79,29 +79,42 @@ class App {
 
     // Close the el window when btn close is clicked
     closeWindow(){
-        this.closeBtn.onmousedown = (e) => {
-            this.window.style.visibility = "hidden";      
-        };
+        if (this.closeBtn){
+            this.closeBtn.onmousedown = (e) => {
+                this.window.style.visibility = "hidden";      
+            };
+        } else {
+            // todo: check why this ain't closing 
+            this.icon.onclick = (e) => {
+                this.window.style.visibility = "hidden";   
+                console.log('clicked the document');    
+            };
+        };    
     };
 
+    // Runs every other method
     run(){
         this.drag(this.icon);
         this.window ? this.drag(this.window) : {};
         this.window ? this.showWindow() : {};
-        this.window ? this.closeWindow() : {};
-    }
-
+        this.closeBtn ? this.closeWindow() : {};
+    };
 };
+
+// I need to make sub classes for the apps
 
 trash = new App('trash');
 computer = new App('computer');
 system = new App('system');
 folder = new App('folder');
+credit = new App('credit');
 
 trash.run();
 computer.run();
 system.run();
 folder.run();
+credit.run();
+
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
