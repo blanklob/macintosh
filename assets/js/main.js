@@ -115,6 +115,7 @@ system = new App('system');
 folder = new App('folder');
 finder = new App('finder');
 alarm = new App('alarm');
+notePad = new App('note-pad');
 
 trash.run();
 computer.run();
@@ -122,6 +123,7 @@ system.run();
 folder.run();
 finder.run();
 alarm.run();
+notePad.run();
 
 
 // Full screen mode

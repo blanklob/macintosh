@@ -63,7 +63,7 @@
                         <li>Snake</li>
                         <li>Control Panel</li>
                         <li>Key Caps</li>
-                        <li>Note Pad</li>
+                        <li id="note-pad">Note Pad</li>
                         <li>Puzzle</li>
                         <li>Scrapbook</li>
                     </ul>              
@@ -189,6 +189,20 @@
                 <div class="window-body">
                 </div>
             </section>
+            <section class="note-pad window noselect">
+                <div class="window-header">
+                    <span class="window-title">Note Pad</span>
+                    <button class="note-pad close_btn"></button>
+                    <div class="window-bars">
+                        <hr><hr><hr><hr><hr><hr>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <article class="note-pad_article" contenteditable tabindex="3">
+                        Write an essay...
+                    </article>
+                </div>
+            </section>
             <section class="finder window noselect">
                 <div class="window-body">
                     <div class="window-info">
@@ -217,6 +231,7 @@
                     <span id="date">08/02/2021</span>
                 </div>
             </section>
+
         </div>
     </main>
 </body>

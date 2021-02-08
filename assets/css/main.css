@@ -300,6 +300,17 @@ main {
     width: 30rem;
 }
 
+.window.note-pad {
+    height: 30rem;
+    width: 25rem;
+}
+
+.note-pad_article {
+    text-align: left;
+    margin: 1rem;
+    font-family: var(--Secondary);
+}
+
 .window.alarm {
     width: 10rem;
 }
