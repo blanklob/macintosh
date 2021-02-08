@@ -28,6 +28,17 @@
     url("//db.onlinewebfonts.com/t/5ef60dc8370b330aa40e0c874bda45aa.svg#Geneva") format("svg"); 
 }
 
+::selection {
+	color: var(--white);
+	background-color: var(--black);
+}
+
+/* for firefox */
+::moz-selection {
+	color: var(--white);
+	background-color: var(--black);
+}
+
 /* Reusables */
 .d-none {
     display: none !important;

@@ -265,8 +265,9 @@ main {
     font-family: var(--Primary), sans-serif;
     border: 2px solid var(--black);
     z-index: 2;
-    left: 30%;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .window-overlay {
@@ -389,7 +390,7 @@ main {
     flex-direction: column;
     width: 70%;
     text-align: center;
-    margin: 5rem auto;
+    margin: 4.7rem auto;
 }
 
 .window.finder .window-footer {
