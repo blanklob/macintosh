@@ -30,7 +30,7 @@ main.addEventListener('click', () => {
 });
 
 // Making icons draggable
-class App {
+class Window {
     constructor(selector){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
@@ -115,12 +115,18 @@ class App {
     };
 };
 
-trash = new App('trash');
-computer = new App('computer');
-system = new App('system');
-folder = new App('folder');
-finder = new App('finder');
-alarm = new App('alarm');
+class App extends Window {
+    constructor(selector){
+        super(selector);
+    }
+}
+
+trash = new Window('trash');
+computer = new Window('computer');
+system = new Window('system');
+folder = new Window('folder');
+finder = new Window('finder');
+alarm = new Window('alarm');
 notePad = new App('note-pad');
 paint = new App('paint');
 
@@ -192,3 +198,35 @@ const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+// Stroke styles
+ctx.strokeStyle = '#000';
+ctx.lineCap = 'round';
+ctx.lineWidth = 10;
+
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+canvas.onmousemove = (e) => {
+    if (!isDrawing) return;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+};
+
+canvas.onmousedown = (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+};
+
+canvas.addEventListener('mouseup', () => (isDrawing = false));
+
+
+// todo: finish paint app
+// todo: finish snake
+// todo: finish the making windows smaller 
+// Fix note pad issue
