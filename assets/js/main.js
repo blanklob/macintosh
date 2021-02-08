@@ -3,6 +3,7 @@ const welcome = document.querySelector('.welcome');
 const macIcon = document.querySelector('.mac_loader');
 const main = document.getElementById('main');
 const header = document.getElementById('header');
+const overlay = document.querySelector('.window-overlay');
 
 window.addEventListener("load", function(event) {
     setTimeout(function() {
@@ -68,29 +69,33 @@ class App {
     showWindow(){
         let eve = main.contains(this.icon) ? 'dblclick' : 'click';
         this.icon.addEventListener(eve, () => {
-            if(this.window.style.visibility === "visible") {
+            if(this.window.style.display === "block") {
                 this.window.classList.add('anim-bounce');
                 setTimeout(function(){
                     this.window.classList.remove('anim-bounce');
                 },2000);
             } else {
-                this.window.style.visibility = "visible";
-            }
+                this.window.style.display = "block";
+                if(!(this.closeBtn)){
+                    overlay.style.display = "block";
+                };
+            };
         });
     };
 
     // Close the el window when btn close is clicked
     closeWindowUsingBtn(){
         this.closeBtn.onclick = (e) => {
-            this.window.style.visibility = "hidden";      
+            this.window.style.display = "none";      
         };  
     };
 
     // Close the el window when background is clicked
     closeWindowUsingBackground(){
-        main.onclick = (e) => {
+        overlay.onclick = (e) => {
             if (this.window){
-                this.window.style.visibility = "hidden";
+                this.window.style.display = "none";
+                overlay.style.display = "none";
             };
         };
     };
@@ -109,12 +114,14 @@ computer = new App('computer');
 system = new App('system');
 folder = new App('folder');
 finder = new App('finder');
+alarm = new App('alarm');
 
 trash.run();
 computer.run();
 system.run();
 folder.run();
 finder.run();
+alarm.run();
 
 
 // Full screen mode
@@ -134,4 +141,22 @@ const pattern = document.getElementById('desktop-pattern');
 pattern.onmousedown = (e) => {
     document.body.classList.toggle('squares_pattern');
 };
+
+// Alarm app
+var time = document.getElementById('time');
+(function() {
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;  
+    
+        setInterval(() => {    
+            let now = new Date().getTime() + hour;
+
+            time.innerText = 
+            Math.floor((now % (day)) / (hour)) + ":" 
+            + Math.floor((now % (hour)) / (minute)) + ":"
+            + Math.floor((now % (minute)) / second);
+        }, 0)
+}());
 

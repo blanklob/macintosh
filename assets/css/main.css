@@ -236,6 +236,11 @@ main {
     left: 1rem;
 }
 
+.icon.switch {
+    top: .1rem;
+    left: 85%;
+}
+
 
 .icon > svg {
     margin: auto;
@@ -251,60 +256,66 @@ main {
 
 /* Window and tabs */
 .window {
-    visibility: hidden;
-    display: flex;
+    display: none;
     position: absolute;
     flex-direction: column;
     background: var(--white);
     font-family: var(--Primary), sans-serif;
     border: 2px solid var(--black);
     z-index: 2;
+    left: 30%;
+    top: 50%;
+}
+
+.window-overlay {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0;
 }
 
 .window.trash {
-    top: 30%;
-    left: 30%;
     height: 20rem;
     width: 25rem;
 }
 
 .window.computer {
-    top: 40%;
-    left: 40%;
     height: 20rem;
     width: 20rem;
 }
 
 .window.system {
-    top: 45%;
-    left: 45%;
     height: 30rem;
     width: 20rem;
 }
 
 .window.folder {
-    top: 25%;
-    left: 25%;
     height: 10rem;
     width: 10rem;
 }
 
 .window.finder {
-    top: 25%;
-    left: 25%;
     height: 15rem;
     width: 30rem;
 }
 
+.window.alarm {
+    height: 1.6rem;
+    width: 10rem;
+}
+
 .window-header {
     position: relative;
-    margin-top: .3rem;
     display: flex;
     align-content: center;
     height: 1.4rem;
     width: 100%;
     border-bottom: 2px solid var(--black);
+    margin-top: .2rem;
 }
+
 
 .window-bars {  
     width: 100%;
@@ -354,12 +365,15 @@ main {
 .window.finder .window-footer {
     display: flex;
     justify-content: space-between;
-    font-family: var(--Secondary);
     margin: 1rem;
 }
 
 .window.finder .window-info_title {
     font-size: 1.6rem;
     margin-bottom: .5rem;
+}
 
+.window.finder .window-info_description,
+.window.finder .window-footer {
+    font-family: var(--Secondary);
 }
