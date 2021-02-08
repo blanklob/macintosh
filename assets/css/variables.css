@@ -63,3 +63,7 @@
     margin: 0 auto;
     max-width: 96%;
 }
+
+.rotate-180 {
+    transform: rotate(180deg);
+}

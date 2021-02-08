@@ -142,16 +142,33 @@ pattern.onmousedown = (e) => {
     document.body.classList.toggle('squares_pattern');
 };
 
-// Alarm app
+// Time app
 var time = document.getElementById('time');
+var date = document.getElementById('date');
+const switcher = document.querySelector('.icon.switch');
+
 (function() {
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;  
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = dd + '-' + mm + '-' + yyyy;
+        date.innerText = today;
+
+        switcher.onclick = (e) => {
+            document.querySelector('.alarm > .window-body').classList.toggle('d-block');
+            switcher.classList.toggle('rotate-180');
+        }
     
         setInterval(() => {    
             let now = new Date().getTime() + hour;
+            
 
             time.innerText = 
             Math.floor((now % (day)) / (hour)) + ":" 

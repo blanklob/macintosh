@@ -237,8 +237,7 @@ main {
 }
 
 .icon.switch {
-    top: .1rem;
-    left: 85%;
+    left: 90%;
 }
 
 
@@ -302,8 +301,11 @@ main {
 }
 
 .window.alarm {
-    height: 1.6rem;
     width: 10rem;
+}
+
+.alarm > .window-body {
+    display: none;
 }
 
 .window-header {
@@ -348,8 +350,10 @@ main {
 }
 
 .window-body {
+    text-align: center;
     height: 90%;
     width: 100%;
+    margin: .3rem 0;
 }
 
 
