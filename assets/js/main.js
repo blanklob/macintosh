@@ -2,6 +2,7 @@
 const welcome = document.querySelector('.welcome');
 const macIcon = document.querySelector('.mac_loader');
 const main = document.getElementById('main');
+const header = document.getElementById('header');
 
 window.addEventListener("load", function(event) {
     setTimeout(function() {
@@ -14,7 +15,6 @@ window.addEventListener("load", function(event) {
 
 // Dropdown menu
 const items = document.querySelectorAll('.mac_menu > li');
-const header = document.querySelector('header');
 
 header.addEventListener('click', () => {
     for (item of items){
@@ -66,7 +66,8 @@ class App {
 
     // Show el window when it's clicked
     showWindow(){
-        this.icon.ondblclick = (e) => {
+        let eve = main.contains(this.icon) ? 'dblclick' : 'click';
+        this.icon.addEventListener(eve, () => {
             if(this.window.style.visibility === "visible") {
                 this.window.classList.add('anim-bounce');
                 setTimeout(function(){
@@ -75,23 +76,22 @@ class App {
             } else {
                 this.window.style.visibility = "visible";
             }
-        };
+        });
     };
 
     // Close the el window when btn close is clicked
     closeWindowUsingBtn(){
-        this.closeBtn.onmousedown = (e) => {
+        this.closeBtn.onclick = (e) => {
             this.window.style.visibility = "hidden";      
         };  
     };
 
     // Close the el window when background is clicked
     closeWindowUsingBackground(){
-        main.onmousedown = (e) => {
-            console.log('closeWindowUsingBackground');
-            this.window.style.visibility = "hidden";
-        }
-    }
+        this.window.onclick = (e) => {
+            e.target.style.visibility = "hidden";
+        };
+    };
 
     // Runs every other method
     run(){
@@ -101,22 +101,6 @@ class App {
         this.closeBtn ? this.closeWindowUsingBtn() : this.closeWindowUsingBackground();
     };
 };
-
-// class Menu extends App {
-//     constructor(selector, mod) {
-//       super(selector);
-//     };
-
-// }
-
-// class Icon extends App {
-//     constructor(selector){
-//         super(selector);
-//         this.closeBtn = document.querySelector('.close_btn.' + selector);
-//     };
-    
-// };
-
 
 trash = new App('trash');
 computer = new App('computer');
