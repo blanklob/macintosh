@@ -88,8 +88,10 @@ class App {
 
     // Close the el window when background is clicked
     closeWindowUsingBackground(){
-        this.window.onclick = (e) => {
-            e.target.style.visibility = "hidden";
+        main.onclick = (e) => {
+            if (this.window){
+                this.window.style.visibility = "hidden";
+            };
         };
     };
 
@@ -106,13 +108,13 @@ trash = new App('trash');
 computer = new App('computer');
 system = new App('system');
 folder = new App('folder');
-credit = new App('credit');
+finder = new App('finder');
 
 trash.run();
 computer.run();
 system.run();
 folder.run();
-credit.run();
+finder.run();
 
 
 // Full screen mode

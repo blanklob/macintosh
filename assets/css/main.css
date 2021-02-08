@@ -289,10 +289,10 @@ main {
     width: 10rem;
 }
 
-.window.credit {
+.window.finder {
     top: 25%;
     left: 25%;
-    height: 20rem;
+    height: 15rem;
     width: 30rem;
 }
 
@@ -342,4 +342,24 @@ main {
 }
 
 
+/* No header windows  */
+.window.finder .window-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    text-align: center;
+    margin: 5rem auto;
+}
 
+.window.finder .window-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--Secondary);
+    margin: 1rem;
+}
+
+.window.finder .window-info_title {
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+
+}
