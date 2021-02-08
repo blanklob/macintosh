@@ -31,17 +31,19 @@ main.addEventListener('click', () => {
 
 // Making icons draggable
 class Window {
-    constructor(selector){
+    constructor(selector, windowDraggable = true){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
         this.closeBtn = document.querySelector('.close_btn.' + selector);
+        this.windowDraggable = windowDraggable;
+        if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
     // drag just like in jquery ;)
-    drag(el) {
+    drag(el2, el1, windowType=true) {
         let pos1 = 0, pos2 = 0, pos3, pos4;
-        el.addEventListener('mousedown', function handleMouseDown(e) { 
-            el.focus();
+        el1.addEventListener('mousedown', function handleMouseDown(e) { 
+            if(!windowType) el1.focus();
             e = e || window.event;
             e.preventDefault();
             pos3 = e.clientX;
@@ -59,14 +61,8 @@ class Window {
                 pos3 = e.clientX;
                 pos4 = e.clientY;
 
-                el.style.top = el.offsetTop < 0 ? "0" : `${el.offsetTop - pos2}px`;
-                el.style.left = `${el.offsetLeft - pos1}px`;
-            };
-
-            // Apperently inputs dont work while listening to mousedown event 
-            // So I will have to delete it for now 
-            if(el.classList.contains('note-pad')) {
-                el.removeEventListener("mousedown", handleMouseDown); 
+                el2.style.top = el2.offsetTop < 0 ? "0" : `${el2.offsetTop - pos2}px`;
+                el2.style.left = `${el2.offsetLeft - pos1}px`;
             };
         });
     };
@@ -108,18 +104,12 @@ class Window {
 
     // Runs every other method
     run(){
-        this.drag(this.icon);
-        this.window ? this.drag(this.window) : {};
+        this.drag(this.icon, this.icon, false);
+        this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
         this.window ? this.showWindow() : {};
         this.closeBtn ? this.closeWindowUsingBtn() : this.closeWindowUsingBackground();
     };
 };
-
-class App extends Window {
-    constructor(selector){
-        super(selector);
-    }
-}
 
 trash = new Window('trash');
 computer = new Window('computer');
@@ -127,8 +117,8 @@ system = new Window('system');
 folder = new Window('folder');
 finder = new Window('finder');
 alarm = new Window('alarm');
-notePad = new App('note-pad');
-paint = new App('paint');
+notePad = new Window('note-pad', false);
+paint = new Window('paint', false);
 
 
 trash.run();
@@ -224,7 +214,7 @@ canvas.onmousedown = (e) => {
 };
 
 canvas.addEventListener('mouseup', () => (isDrawing = false));
-
+canvas.addEventListener('mouseout', () => (isDrawing = false));
 
 // todo: finish paint app
 // todo: finish snake
