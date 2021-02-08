@@ -1,6 +1,8 @@
 // Splash page
 const welcome = document.querySelector('.welcome');
 const macIcon = document.querySelector('.mac_loader');
+const main = document.getElementById('main');
+
 window.addEventListener("load", function(event) {
     setTimeout(function() {
         macIcon.remove();
@@ -13,7 +15,6 @@ window.addEventListener("load", function(event) {
 // Dropdown menu
 const items = document.querySelectorAll('.mac_menu > li');
 const header = document.querySelector('header');
-const main = document.querySelector('main');
 
 header.addEventListener('click', () => {
     for (item of items){
@@ -78,30 +79,44 @@ class App {
     };
 
     // Close the el window when btn close is clicked
-    closeWindow(){
-        if (this.closeBtn){
-            this.closeBtn.onmousedown = (e) => {
-                this.window.style.visibility = "hidden";      
-            };
-        } else {
-            // todo: check why this ain't closing 
-            this.icon.onclick = (e) => {
-                this.window.style.visibility = "hidden";   
-                console.log('clicked the document');    
-            };
-        };    
+    closeWindowUsingBtn(){
+        this.closeBtn.onmousedown = (e) => {
+            this.window.style.visibility = "hidden";      
+        };  
     };
+
+    // Close the el window when background is clicked
+    closeWindowUsingBackground(){
+        main.onmousedown = (e) => {
+            console.log('closeWindowUsingBackground');
+            this.window.style.visibility = "hidden";
+        }
+    }
 
     // Runs every other method
     run(){
         this.drag(this.icon);
         this.window ? this.drag(this.window) : {};
         this.window ? this.showWindow() : {};
-        this.closeBtn ? this.closeWindow() : {};
+        this.closeBtn ? this.closeWindowUsingBtn() : this.closeWindowUsingBackground();
     };
 };
 
-// I need to make sub classes for the apps
+// class Menu extends App {
+//     constructor(selector, mod) {
+//       super(selector);
+//     };
+
+// }
+
+// class Icon extends App {
+//     constructor(selector){
+//         super(selector);
+//         this.closeBtn = document.querySelector('.close_btn.' + selector);
+//     };
+    
+// };
+
 
 trash = new App('trash');
 computer = new App('computer');
