@@ -304,6 +304,11 @@ main {
     width: 30rem;
 }
 
+.window.paint {
+    height: 30rem;
+    width: 45rem;
+}
+
 .window.note-pad {
     height: 27rem;
     width: 23rem;

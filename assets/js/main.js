@@ -122,6 +122,8 @@ folder = new App('folder');
 finder = new App('finder');
 alarm = new App('alarm');
 notePad = new App('note-pad');
+paint = new App('paint');
+
 
 trash.run();
 computer.run();
@@ -130,6 +132,7 @@ folder.run();
 finder.run();
 alarm.run();
 notePad.run();
+paint.run();
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
@@ -184,3 +187,8 @@ const switcher = document.querySelector('.icon.switch');
         }, 0)
 }());
 
+// Paint App
+const canvas = document.getElementById('paint-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
