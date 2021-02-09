@@ -207,7 +207,9 @@ const switcher = document.querySelector('.icon.switch');
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
 const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
-const cmdBtns = document.querySelectorAll('.paint-cmd > .btn');
+const clearBtn = document.querySelector('.paint-cmd > .clear.btn');
+const eraserBtn = document.querySelector('.paint-cmd > .eraser.btn');
+
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -217,12 +219,17 @@ clearBtn.onclick = (e) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
 };
 
+eraserBtn.onclick = (e) => {
+    ctx.strokeStyle = '#fff'; 
+};
+
 // Stroke styles
 ctx.strokeStyle = '#000';
 ctx.lineCap = 'round';
 for (let btn of strokeBtns) {
     btn.onclick = (e) => {
         ctx.lineWidth = btn.id;
+        ctx.strokeStyle = '#000';
     };
 };
 
