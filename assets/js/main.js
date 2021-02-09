@@ -207,21 +207,34 @@ const switcher = document.querySelector('.icon.switch');
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
 const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
+
 const clearBtn = document.querySelector('.paint-cmd > .clear.btn');
 const eraserBtn = document.querySelector('.paint-cmd > .eraser.btn');
+const lineBtn = document.querySelector('.paint-cmd > .line.btn');
+const penBtn =document.querySelector('.paint-cmd > .pen.btn');
 
+let drawMode = 'pen';
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // Clear Canvas
-clearBtn.onclick = (e) => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+clearBtn.onclick = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  
+    [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
 };
 
 eraserBtn.onclick = (e) => {
     ctx.strokeStyle = '#fff'; 
 };
+
+lineBtn.onclick = (e) => {
+    drawMode = 'line';
+};
+
+penBtn.onclick = (e) => {
+    drawMode = 'pen';
+}
 
 // Stroke styles
 ctx.strokeStyle = '#000';
@@ -233,16 +246,22 @@ for (let btn of strokeBtns) {
     };
 };
 
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
+// Coords
+let isDrawing = false,
+lastX = 0,
+lastY = 0,
+lastLY = 0,
+lastLX = 0;
+
 
 canvas.onmousemove = (e) => {
     if (!isDrawing) return;
     ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
+    if (drawMode === 'pen'){
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+    };
 
   [lastX, lastY] = [e.offsetX, e.offsetY];
 };
@@ -250,12 +269,18 @@ canvas.onmousemove = (e) => {
 canvas.onmousedown = (e) => {
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
+    if (drawMode === 'line'){
+        ctx.moveTo(lastLX, lastLY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+    };
 };
 
-
-canvas.addEventListener('mouseup', () => (isDrawing = false));
+canvas.addEventListener('mouseup', (e) => {
+    isDrawing = false;
+    [lastLX, lastLY] = [e.offsetX, e.offsetY];
+});
 canvas.addEventListener('mouseout', () => (isDrawing = false));
-
 // todo: finish paint app
 // todo: finish snake
 // todo: finish the making windows smaller 
