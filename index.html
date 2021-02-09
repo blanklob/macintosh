@@ -60,7 +60,7 @@
                         <li id="finder"class="menu-title">About the finder...</li>
                         <li id="alarm">Time Clock</li>
                         <li>Calculator</li>
-                        <li>Snake</li>
+                        <li id="snake">Snake</li>
                         <li>Control Panel</li>
                         <li id="paint">Paint</li>
                         <li id="note-pad">Note Pad</li>
@@ -92,7 +92,7 @@
                 </li>
                 <li>Special
                     <ul class="dropdown special">
-                        <li>Report a Bug...</li>
+                        <li><a href="mailto:youness.id-bakkasse@hetic.net?subject=Bugs, bugs are everywhere !!">Report a Bug...</a></li>
                         <li>Credit</li>
                     </ul> 
                 </li>
@@ -170,7 +170,10 @@
                     </button>
                 </div>
                 <div class="window-body">
-                    <canvas id="paint-canvas"></canvas>
+                    <canvas id="paint-canvas">
+                        <!-- in case browser deosn't support canvas -->
+                        Sorry, your web browser deos not support Canvas, You might wanna switch to a newer version. 
+                    </canvas>
                 </div>
                 <div class="paint-cmd">
                     <button class="clear btn"></button>
@@ -223,6 +226,7 @@
                 <div class="window-body">
                 </div>
             </section>
+            <!-- System folder -->
             <section class="system window noselect" tabindex="10">
                 <div class="window-header">
                     <span class="window-title">System Software</span>
@@ -297,7 +301,24 @@
                     <span id="date">08/02/2021</span>
                 </div>
             </section>
-
+            <!-- Snake App -->
+            <section class="snake window noselect" tabindex="19">
+                <div class="window-header">
+                    <span class="window-title">Snake</span>
+                    <button class="snake close_btn"></button>
+                    <div class="window-bars">
+                        <hr><hr><hr><hr><hr><hr>
+                    </div>
+                    <button class="snake resize_btn">
+                        <div class="expand-rect"></div>
+                    </button>
+                </div>
+                <div class="window-body">
+                    <canvas id="snake-canvas">
+                        Sorry, your web browser deos not support Canvas, You might wanna switch to a newer version. 
+                    </canvas>
+                </div>
+            </section>
         </div>
     </main>
 </body>

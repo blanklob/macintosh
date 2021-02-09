@@ -11,6 +11,15 @@
     outline: none;
 }
 
+a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--white);
+}
+
 body {
     background: url(/assets/icons/Swatch.svg);
     overflow: hidden;
@@ -306,6 +315,11 @@ main {
 .window.paint {
     height: 30rem;
     width: 45rem;
+}
+
+.window.snake {
+    height: 28rem;
+    width: 35rem;
 }
 
 .paint-cmd {

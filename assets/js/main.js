@@ -38,7 +38,7 @@ class Window {
         this.windowDraggable = windowDraggable;
         this.closeBtn = document.querySelector('.close_btn.' + selector);
         this.resizeBtn = document.querySelector('.resize_btn.' + selector);
-        console.log(this.resizeBtn);
+        console.log(this.window);
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
@@ -137,7 +137,6 @@ class Window {
     };
 };
 
-
 computer = new Window('computer');
 system = new Window('system');
 folder = new Window('folder');
@@ -146,7 +145,7 @@ alarm = new Window('alarm');
 notePad = new Window('note-pad', false);
 paint = new Window('paint', false);
 trash = new Window('trash');
-
+snake = new Window('snake', false);
 
 computer.run();
 system.run();
@@ -156,6 +155,7 @@ alarm.run();
 notePad.run();
 paint.run();
 trash.run();
+snake.run();
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
@@ -295,7 +295,168 @@ canvas.addEventListener('mouseup', (e) => {
     [lastLX, lastLY] = [e.offsetX, e.offsetY];
 });
 canvas.addEventListener('mouseout', () => (isDrawing = false));
-// todo: finish paint app
-// todo: finish snake
-// todo: finish the making windows smaller 
+
+
+// Snake App
+class Screen {
+    constructor() {
+        // creates a canvas for each app
+        this.canvas = document.getElementById('snake-canvas');
+        this.canvas.width = window.innerWidth;;
+        this.canvas.height = window.innerHeight;
+        this.rows = this.canvas.height/1000;
+        this.columns = this.canvas.width/1000;
+        this.ctx = this.canvas.getContext('2d');
+    }
+    
+    clear() {
+        // clear the canvas screen
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+class Snake {
+    constructor() {
+        // initiate snake attributes
+        this.part = 10;
+        this.speedChange = 10;
+        this.speedX = 0;
+        this.speedY = this.speedChange * -1;
+        this.screen = new Screen();
+        //this.x = this.screen.canvas.width/2;
+        //this.y = this.screen.canvas.height - 20;
+        this.tail= [{x: this.screen.canvas.width/2, y: this.screen.canvas.height - 20}]
+        this.foodX = 50;
+        this.foodY = 50;
+        this.score= 0;
+        this.direction= '';
+    }
+
+    draw() {
+        // draw the snake on the screen
+        this.screen.clear();
+
+        // const head = {x: this.tail[0].x + this.speedX, y: this.tail[0].y + this.speedY};
+        // this.tail.unshift(head);
+
+        this.screen.ctx.fillStyle = 'black';
+        for(var i= 0; i< this.tail.length; i++){
+            this.screen.ctx.fillRect(this.tail[i].x, this.tail[i].y, this.part, this.part ); 
+        }
+        this.constraints();
+        this.update();
+    }
+    drawFood(){
+        this.screen.ctx.fillStyle = 'red';
+        this.screen.ctx.fillRect(this.foodX, this.foodY, this.part,this.part);
+    }
+    randFood() {
+        this.foodX=Math.round((Math.random() * (this.screen.canvas.width-10) ) / 10) * 10;
+        this.foodY=Math.round((Math.random() * (this.screen.canvas.height-10) ) / 10) * 10;
+    }
+
+    update() {
+        // updates snake's coords
+        //this.x += this.speedX;
+        //this.y += this.speedY;
+        
+        var add = {x: this.tail[0].x + this.speedX, y: this.tail[0].y + this.speedY};
+        this.tail.unshift(add);
+        this.hasEaten();
+        this.tail.pop();
+    }
+    hasEaten(){
+        for(var i= 0; i< this.tail.length; i++){
+            if(this.tail[i].x === this.foodX && this.tail[i].y===this.foodY){
+                this.score+=5;
+                //console.log(this.score)
+                //document.getElementById('score').innerHTML= this.score;
+                this.tail.push(this.tail[0]);
+                this.randFood();
+
+            }else{
+                
+            }
+        }
+    }
+
+    changeDirection(direction) {
+        switch(direction) {
+            case 'Up':
+                if(this.direction == 'Down'){break;}
+                this.speedX = 0;
+                this.speedY = this.speedChange * -1;
+                this.direction= 'Up';
+                break;
+            case 'Down':
+                if(this.direction == 'Up'){break;}
+                this.speedX = 0;
+                this.speedY = this.speedChange * 1;
+                this.direction= 'Down';
+                break;
+            case 'Right':
+                if(this.direction== 'Left'){break;}
+                this.speedY = 0;
+                this.speedX = this.speedChange * 1;
+                this.direction= 'Right';
+                break;
+            case 'Left':
+                if(this.direction == 'Right'){break;}
+                this.speedY = 0;
+                this.speedX = this.speedChange * -1;
+                this.direction= 'Left';
+                break;
+        }
+    }
+
+    constraints () {
+        for(var i=4; i<this.tail.length; i++){
+            if(this.tail[i].x == this.tail[0].x && this.tail[i].y == this.tail[0].y ){
+                //location.reload();
+                this.gameOver();
+                clearInterval(intervalID);
+            }
+        }
+        if ((this.tail[0].x > this.screen.canvas.width-10 || this.tail[0].x < 0) || 
+        (this.tail[0].y > this.screen.canvas.height-10 || this.tail[0].y < 0)){
+            // this.tail[0].x = this.screen.canvas.width/2;
+            // this.tail[0].y = this.screen.canvas.height/2;
+            // this.speedX = 0;
+            // this.speedY = 0;
+            this.gameOver();
+            //location.reload();
+        }
+        
+    }
+    gameOver(){
+        this.screen.clear();
+        this.screen.ctx.fillStyle = 'red';
+        this.screen.ctx.font = '50px serif';
+        this.screen.ctx.textAlign = "center";
+        this.screen.ctx.fillText('Game Over', this.screen.canvas.width/2, this.screen.canvas.height/2);
+        this.screen.ctx.fillStyle = 'black';
+        this.screen.ctx.font = '25px serif';
+        this.screen.ctx.fillText('Score: '+ this.score, this.screen.canvas.width/2, this.screen.canvas.height/2+50);
+    }
+}
+
+const snak = new Snake();
+
+var intervalID = window.setInterval(() => {
+   // snake.screen.clear();
+    //snake.update();
+    //snake.constraints();
+    snak.draw();
+    snak.drawFood();       
+}, 200); 
+
+window.addEventListener('keydown', ((evt) => {
+    const direction = evt.key.replace('Arrow', '');
+    console.log(direction)
+    snak.changeDirection(direction);
+}));
+
+
+
 // todo: Add some folders to the trash and others
+
