@@ -322,6 +322,11 @@ main {
     width: 35rem;
 }
 
+.window.calculator {
+    height: 22rem;
+    width: 14rem;
+}
+
 .paint-cmd {
     position: absolute;
     display: grid;

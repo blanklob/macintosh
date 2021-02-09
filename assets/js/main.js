@@ -146,6 +146,7 @@ notePad = new Window('note-pad', false);
 paint = new Window('paint', false);
 trash = new Window('trash');
 snake = new Window('snake', false);
+calculator = new Window('calculator', false);
 
 computer.run();
 system.run();
@@ -156,6 +157,7 @@ notePad.run();
 paint.run();
 trash.run();
 snake.run();
+calculator.run();
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
@@ -207,7 +209,7 @@ const switcher = document.querySelector('.icon.switch');
             Math.floor((now % (day)) / (hour)) + ":" 
             + Math.floor((now % (hour)) / (minute)) + ":"
             + Math.floor((now % (minute)) / second);
-        }, 0)
+        },  0)
 }());
 
 // Paint App
@@ -456,7 +458,7 @@ window.addEventListener('keydown', ((evt) => {
     snak.changeDirection(direction);
 }));
 
-
+// Calculator App
 
 // todo: Add some folders to the trash and others
 
