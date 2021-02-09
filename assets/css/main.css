@@ -460,6 +460,28 @@ main {
     height: 1rem;
 }
 
+.resize_btn {
+    position: absolute;
+    right: 1.4rem;
+    top: 1px;
+    border: 1px solid var(--black);
+    background: var(--white);
+    width: 1rem;
+    height: 1rem;
+}
+
+.expand-rect {
+    position: absolute;
+    background-color: var(--white);
+    top: 0;
+    left: 0;
+    border-width: 0 1px 1px 0; 
+    border-style: solid;
+    border-color: var(--black);
+    width: 50%;
+    height: 50%;
+}
+
 .window-body {
     text-align: center;
     overflow: hidden;

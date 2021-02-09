@@ -34,9 +34,11 @@ class Window {
     constructor(selector, windowDraggable = true){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
-        // console.log(this.window);
-        this.closeBtn = document.querySelector('.close_btn.' + selector);
+        
         this.windowDraggable = windowDraggable;
+        this.closeBtn = document.querySelector('.close_btn.' + selector);
+        this.resizeBtn = document.querySelector('.resize_btn.' + selector);
+        console.log(this.resizeBtn);
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
@@ -99,6 +101,10 @@ class Window {
         };  
     };
 
+    resizeWindow(){
+        this.resizeBtn.onclick = (e) => {this.window.classList.toggle('anim-resize');};
+    };
+
     // This thing has a fucking bug 
     isActive(){
         document.onclick = () => {
@@ -123,6 +129,7 @@ class Window {
     // Runs every other method
     run(){
         this.drag(this.icon, this.icon);
+        this.resizeBtn ? this.resizeWindow() : {};
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
         this.window ? this.isActive(): {};
         this.window ? this.showWindow() : {};
