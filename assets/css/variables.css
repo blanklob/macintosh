@@ -44,8 +44,14 @@
     display: none !important;
 }
 
-.z-5 {
-    z-index: 5 !important;
+.btn {
+    border-radius: 0;
+    border: 1px solid var(--black);
+    background: var(--white);
+}
+
+.btn:focus {
+    background-color: var(--black);
 }
 
 .d-block {

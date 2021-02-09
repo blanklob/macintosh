@@ -34,7 +34,7 @@ class Window {
     constructor(selector, windowDraggable = true){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
-        console.log(this.window);
+        // console.log(this.window);
         this.closeBtn = document.querySelector('.close_btn.' + selector);
         this.windowDraggable = windowDraggable;
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
@@ -206,13 +206,25 @@ const switcher = document.querySelector('.icon.switch');
 // Paint App
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
+const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
+const cmdBtns = document.querySelectorAll('.paint-cmd > .btn');
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+// Clear Canvas
+clearBtn.onclick = (e) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+};
 
 // Stroke styles
 ctx.strokeStyle = '#000';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+for (let btn of strokeBtns) {
+    btn.onclick = (e) => {
+        ctx.lineWidth = btn.id;
+    };
+};
 
 let isDrawing = false;
 let lastX = 0;
@@ -232,6 +244,7 @@ canvas.onmousedown = (e) => {
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
 };
+
 
 canvas.addEventListener('mouseup', () => (isDrawing = false));
 canvas.addEventListener('mouseout', () => (isDrawing = false));

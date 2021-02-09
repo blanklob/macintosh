@@ -308,6 +308,57 @@ main {
     width: 45rem;
 }
 
+.paint-cmd {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    top: 0;
+    left: -6rem;
+    height: 6rem;
+    width: 5rem;
+}
+
+.paint-stroke {
+    position: absolute;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    top: 6rem;
+    left: -6rem;
+    height: 10rem;
+    width: 5rem;
+}
+
+.paint-stroke hr {
+    width: 70%;
+    margin: auto;
+}
+
+.paint-stroke .btn:focus >
+hr {
+    border-color: var(--white);
+}
+
+.paint-stroke > 
+.solid-1 hr {
+    border-top: 2px solid var(--black);
+}
+
+.paint-stroke > 
+.solid-2 hr {
+    border-top: 4px solid var(--black);
+}
+
+.paint-stroke > 
+.solid-3 hr {
+    border-top: 6px solid var(--black);
+}
+
+.paint-stroke > 
+.solid-4 hr {
+    border-top: 10px solid var(--black);
+}
+
 .window.note-pad {
     height: 27rem;
     width: 23rem;
