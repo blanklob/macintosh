@@ -323,8 +323,72 @@ main {
 }
 
 .window.calculator {
-    height: 22rem;
-    width: 14rem;
+    height: 16rem;
+    width: 10rem;
+}
+.window-header.calculator {
+    margin-top: 0;
+    background-color: var(--black);
+    color: var(--white);
+    padding: .2rem 0rem;
+}
+
+.calc-header {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.calculator > .window-body {
+    width: 100%;
+    height: 88%;
+    background: url(/assets/icons/scrollswatch.svg);
+    margin: 0;
+}
+
+.calc-title {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 55%;
+    transform: translateX(-50%);
+}
+
+.calc-output {
+    position: relative;
+    top: .5rem;
+    height: 1.4rem;
+    margin: auto;
+    width: 85%;
+    background: var(--white);
+    border: 2px solid var(--black);
+    text-align: right;
+}
+
+.calc-output > #calc-res {
+    position: relative;
+    top: .2rem;
+    margin: 0 .4rem;
+    font-family: var(--Secondary);
+}
+
+.calc-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: .6rem;
+    width: 85%;
+    height: 75%;
+    margin: auto;
+    position: relative;
+    top: 1rem;
+    font-family: var(--Secondary);
+    font-size: .9rem;
+}
+
+.calc-pad button {
+    background: var(--white);
+    border-radius: 0;
+    border: 2px solid var(--black);
+    box-shadow: .25rem .25rem var(--black);
 }
 
 .paint-cmd {
@@ -489,6 +553,13 @@ main {
     height: 1rem;
 }
 
+.calc-btn {
+    left: 4%;
+    top: 5px;
+    border: 2px solid #fff;
+    background: transparent;
+}
+
 .expand-rect {
     position: absolute;
     background-color: var(--white);
@@ -508,6 +579,8 @@ main {
     width: 100%;
     margin: .3rem 0;
 }
+
+
 
 
 /* No header windows  */

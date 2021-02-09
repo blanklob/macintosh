@@ -107,14 +107,15 @@ class Window {
 
     // This thing has a fucking bug 
     isActive(){
-        document.onclick = () => {
-            let el = this.windowObj;
-            if(el === document.activeElement){
-                el.style.zIndex = "3";
-            } else {
-                el.style.zIndex = "1";
-            };
-        };
+        // document.onclick = () => {
+        //     let el = this.windowObj;
+        //     if(el === document.activeElement){
+        //         el.style.zIndex = "3";
+        //     } else {
+        //         el.style.zIndex = "1";
+        //     };
+        // };
+        {}
     };
 
     // Close the el window when background is clicked
