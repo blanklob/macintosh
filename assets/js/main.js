@@ -206,17 +206,16 @@ const switcher = document.querySelector('.icon.switch');
 // Paint App
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
-const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
+// Mission control
+const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
 const clearBtn = document.querySelector('.paint-cmd > .clear.btn');
 const eraserBtn = document.querySelector('.paint-cmd > .eraser.btn');
 const lineBtn = document.querySelector('.paint-cmd > .line.btn');
 const penBtn =document.querySelector('.paint-cmd > .pen.btn');
-
-let drawMode = 'pen';
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const sprayBtn =document.querySelector('.paint-cmd > .spray.btn');
 
 // Clear Canvas
 clearBtn.onclick = () => {
@@ -224,20 +223,15 @@ clearBtn.onclick = () => {
     [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
 };
 
-eraserBtn.onclick = (e) => {
-    ctx.strokeStyle = '#fff'; 
-};
-
-lineBtn.onclick = (e) => {
-    drawMode = 'line';
-};
-
-penBtn.onclick = (e) => {
-    drawMode = 'pen';
-}
+// Draw modes
+let drawMode = 'pen';
+lineBtn.onclick = (e) => {drawMode = 'line';};
+penBtn.onclick = (e) => { drawMode = 'pen';};
+sprayBtn.onclick = () => {drawMode = 'spray'};
 
 // Stroke styles
 ctx.strokeStyle = '#000';
+eraserBtn.onclick = (e) => {ctx.strokeStyle = '#fff'; };
 ctx.lineCap = 'round';
 for (let btn of strokeBtns) {
     btn.onclick = (e) => {
@@ -253,7 +247,7 @@ lastY = 0,
 lastLY = 0,
 lastLX = 0;
 
-
+// Mouse events
 canvas.onmousemove = (e) => {
     if (!isDrawing) return;
     ctx.beginPath();
@@ -261,9 +255,14 @@ canvas.onmousemove = (e) => {
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
+    } else if (drawMode === 'spray') {
+        for (let i = 20; i>0; i--) { 
+            ctx.rect(lastX + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 
+                    lastY + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 1, 1);
+            ctx.fill();
+        };   
     };
-
-  [lastX, lastY] = [e.offsetX, e.offsetY];
+    [lastX, lastY] = [e.offsetX, e.offsetY];
 };
 
 canvas.onmousedown = (e) => {
