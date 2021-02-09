@@ -334,10 +334,40 @@ main {
     margin: auto;
 }
 
-.paint-stroke .btn:focus >
-hr {
-    border-color: var(--white);
+.line.btn hr {
+    margin: .5rem;
+    transform: rotate(45deg);
+    border-top: 1px solid var(--black);
 }
+
+.pen.btn svg{
+    position: relative;
+    top: .2rem;
+    left: -.1rem
+}
+
+.eraser.btn svg {
+    position: relative;
+    top: .1rem;
+}
+
+.multilines.btn hr {
+    position: relative;
+    margin: .5rem;
+    border-top: 1px solid var(--black);
+}
+
+.multilines.btn hr:first-child {
+    top: .15rem;
+    transform: rotate(20deg);
+}
+
+.multilines.btn hr:last-child {
+    top: -.1rem;
+    transform: rotate(-10deg);
+    border-top: 1px solid var(--black);
+}
+
 
 .paint-stroke > 
 .solid-1 hr {

@@ -216,29 +216,7 @@ const eraserBtn = document.querySelector('.paint-cmd > .eraser.btn');
 const lineBtn = document.querySelector('.paint-cmd > .line.btn');
 const penBtn =document.querySelector('.paint-cmd > .pen.btn');
 const sprayBtn =document.querySelector('.paint-cmd > .spray.btn');
-
-// Clear Canvas
-clearBtn.onclick = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  
-    [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
-};
-
-// Draw modes
-let drawMode = 'pen';
-lineBtn.onclick = (e) => {drawMode = 'line';};
-penBtn.onclick = (e) => { drawMode = 'pen';};
-sprayBtn.onclick = () => {drawMode = 'spray'};
-
-// Stroke styles
-ctx.strokeStyle = '#000';
-eraserBtn.onclick = (e) => {ctx.strokeStyle = '#fff'; };
-ctx.lineCap = 'round';
-for (let btn of strokeBtns) {
-    btn.onclick = (e) => {
-        ctx.lineWidth = btn.id;
-        ctx.strokeStyle = '#000';
-    };
-};
+const multilinesBtn =document.querySelector('.paint-cmd > .multilines.btn');
 
 // Coords
 let isDrawing = false,
@@ -246,6 +224,31 @@ lastX = 0,
 lastY = 0,
 lastLY = 0,
 lastLX = 0;
+
+// Draw modes
+let drawMode = 'pen';
+lineBtn.onclick = () => {drawMode = 'line'; ctx.strokeStyle = '#000';};
+penBtn.onclick = () => { drawMode = 'pen'; ctx.strokeStyle = '#000';};
+sprayBtn.onclick = () => {drawMode = 'spray'; ctx.strokeStyle = '#000';};
+multilinesBtn.onclick = () => {drawMode = 'multilines'; ctx.strokeStyle = '#000';};
+eraserBtn.onclick = (e) => {drawMode = 'pen'; ctx.strokeStyle = '#fff'; };
+
+
+// Clear Canvas
+clearBtn.onclick = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  
+    [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
+};
+
+// Stroke styles
+ctx.strokeStyle = '#000';
+ctx.lineCap = 'round';
+for (let btn of strokeBtns) {
+    btn.onclick = (e) => {
+        ctx.lineWidth = btn.id;
+        ctx.strokeStyle = '#000';
+    };
+};
 
 // Mouse events
 canvas.onmousemove = (e) => {
@@ -261,7 +264,12 @@ canvas.onmousemove = (e) => {
                     lastY + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 1, 1);
             ctx.fill();
         };   
-    };
+    } else if (drawMode === 'multilines') {
+        ctx.moveTo(lastLX, lastLY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.lineWidth = '1';
+        ctx.stroke();
+    }
     [lastX, lastY] = [e.offsetX, e.offsetY];
 };
 
