@@ -34,24 +34,30 @@ class Window {
     constructor(selector, windowDraggable = true){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
+        console.log(this.window);
         this.closeBtn = document.querySelector('.close_btn.' + selector);
         this.windowDraggable = windowDraggable;
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
+    get windowObj(){
+        return this.window;
+    }
+
     // drag just like in jquery ;)
-    drag(el2, el1, windowType=true) {
+    drag(el2, el1) {
         let pos1 = 0, pos2 = 0, pos3, pos4;
         el1.addEventListener('mousedown', function handleMouseDown(e) { 
-            if(!windowType) el1.focus();
+            el2.focus();
             e = e || window.event;
             e.preventDefault();
             pos3 = e.clientX;
             pos4 = e.clientY;
             document.onmouseup = (e) => {
                 document.onmouseup = null;
-                document.onmousemove = null;
+                document.onmousemove = null;                          
             };
+            
             document.onmousemove = (e) => {
                 e = e || window.event;
                 e.preventDefault();
@@ -88,8 +94,21 @@ class Window {
     // Close the el window when btn close is clicked
     closeWindowUsingBtn(){
         this.closeBtn.onclick = (e) => {
-            this.window.style.display = "none";      
+            this.window.style.display = "none"; 
+            this.window.style.zIndex = "1";  
         };  
+    };
+
+    // This thing has a fucking bug 
+    isActive(){
+        document.onclick = () => {
+            let el = this.windowObj;
+            if(el === document.activeElement){
+                el.style.zIndex = "3";
+            } else {
+                el.style.zIndex = "1";
+            };
+        };
     };
 
     // Close the el window when background is clicked
@@ -97,21 +116,21 @@ class Window {
         overlay.onclick = (e) => {
             if (this.window){
                 this.window.style.display = "none";
-                overlay.style.display = "none";
             };
         };
     };
 
     // Runs every other method
     run(){
-        this.drag(this.icon, this.icon, false);
+        this.drag(this.icon, this.icon);
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
+        this.window ? this.isActive(): {};
         this.window ? this.showWindow() : {};
         this.closeBtn ? this.closeWindowUsingBtn() : this.closeWindowUsingBackground();
     };
 };
 
-trash = new Window('trash');
+
 computer = new Window('computer');
 system = new Window('system');
 folder = new Window('folder');
@@ -119,9 +138,9 @@ finder = new Window('finder');
 alarm = new Window('alarm');
 notePad = new Window('note-pad', false);
 paint = new Window('paint', false);
+trash = new Window('trash');
 
 
-trash.run();
 computer.run();
 system.run();
 folder.run();
@@ -129,6 +148,7 @@ finder.run();
 alarm.run();
 notePad.run();
 paint.run();
+trash.run();
 
 // Full screen mode
 const fullScreen = document.getElementById('full-screen');
@@ -219,4 +239,4 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
 // todo: finish paint app
 // todo: finish snake
 // todo: finish the making windows smaller 
-// Fix note pad issue
+// todo: Add some folders to the trash and others

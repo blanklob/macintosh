@@ -260,7 +260,6 @@ main {
 .window {
     display: none;
     position: absolute;
-    flex-direction: column;
     background: var(--white);
     font-family: var(--Primary), sans-serif;
     border: 2px solid var(--black);

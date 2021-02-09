@@ -10,7 +10,7 @@
 }
 
 @keyframes bounce {
-    50% {transform: scale(1.04); }
+    50% {transform: scale(1.01); }
 }
 
 @keyframes hide {
