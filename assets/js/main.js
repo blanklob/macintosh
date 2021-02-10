@@ -243,6 +243,7 @@ fullScreen.addEventListener('click', (e) => {
 // Desktop Pattern
 const pattern = document.getElementById('desktop-pattern');
 pattern.onmousedown = (e) => {
+    // 1984 Macintosh dark mode version ;)
     document.body.classList.toggle('squares_pattern');
 };
 
@@ -252,28 +253,34 @@ date = document.getElementById('date');
 const switcher = document.querySelector('.icon.switch');
 
 (function() {
+    // Here we define our time parametres
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;  
 
+        // to get current date in this format dd-mm-yyyy
         var today = new Date(),
+        // From stackoverflow ###################
             dd = String(today.getDate()).padStart(2, '0'),
             mm = String(today.getMonth() + 1).padStart(2, '0'),
             yyyy = today.getFullYear();
+        // ############################
 
         today = dd + '-' + mm + '-' + yyyy;
         date.innerText = today;
 
         switcher.onclick = (e) => {
+            // Here we show the date when switcher in the time app is clicked u should check it !!
             document.querySelector('.alarm > .window-body').classList.toggle('d-block');
             switcher.classList.toggle('rotate-180');
         }
     
         setInterval(() => {    
+            // Here we run out time machine 
+            // We get the time from the navigator in ms 
             let now = new Date().getTime() + hour;
-            
-
+            // We apply our filters to get the current time we add + hour for utc+1 'Paris time' :)
             time.innerText = 
             Math.floor((now % (day)) / (hour)) + ":" 
             + Math.floor((now % (hour)) / (minute)) + ":"
@@ -281,13 +288,16 @@ const switcher = document.querySelector('.icon.switch');
         },  1000)
 }());
 
+// Now the HARDCORE Stuff HTML5 CANVAS
 // Paint App -------------------------------------
+// we create a paint canvas 
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // Mission control
+// We select all the btns from the paint mission control system
 const strokeBtns = document.querySelectorAll('.paint-stroke > .btn'),
     clearBtn = document.querySelector('.paint-cmd > .clear.btn'),
     eraserBtn = document.querySelector('.paint-cmd > .eraser.btn'),
@@ -297,6 +307,7 @@ const strokeBtns = document.querySelectorAll('.paint-stroke > .btn'),
     multilinesBtn =document.querySelector('.paint-cmd > .multilines.btn');
 
 // Coords
+// Here we define the pen previous coords
 let isDrawing = false,
 lastX = 0,
 lastY = 0,
@@ -304,6 +315,8 @@ lastLY = 0,
 lastLX = 0;
 
 // Draw modes
+// Bisacly we have 4 drawing modes listed below when we click a btn we switch between modes
+// exept for the clean mode we use a white stroke style to erase everything since the canvas is by default white.
 let drawMode = 'pen';
 lineBtn.onclick = () => {drawMode = 'line'; ctx.strokeStyle = '#000';};
 penBtn.onclick = () => { drawMode = 'pen'; ctx.strokeStyle = '#000';};
@@ -312,13 +325,14 @@ multilinesBtn.onclick = () => {drawMode = 'multilines'; ctx.strokeStyle = '#000'
 eraserBtn.onclick = (e) => {drawMode = 'pen'; ctx.strokeStyle = '#fff'; };
 
 
-// Clear Canvas
+// Clear canvas on one click.
 clearBtn.onclick = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  
     [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
 };
 
 // Stroke styles
+// Here we difine stroke width modes we pass the mode using btn id's.
 ctx.strokeStyle = '#000';
 ctx.lineCap = 'round';
 for (let btn of strokeBtns) {
@@ -329,6 +343,12 @@ for (let btn of strokeBtns) {
 };
 
 // Mouse events
+/* When mouse is moving over the canvas, we check if we are on drawing mode
+if not we get out of the event handler, otherwise, we start drawing using 'move to' and
+'line to' 2D canvas methodes the stroke method fill the lines with stroke style color
+we pass mouse coords as parametres for these methodes just like I did with the drag method
+for the window remember.
+*/ 
 canvas.onmousemove = (e) => {
     if (!isDrawing) return;
     ctx.beginPath();
@@ -337,12 +357,21 @@ canvas.onmousemove = (e) => {
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
     } else if (drawMode === 'spray') {
+        /* Spray mode is very intresting because we use random rect generateur 
+        to draw multiple rects in every mousemove using a for loop, this a cool
+        mode too, I wish you could try it, it's way better than Window's Paint.
+        */
         for (let i = 30; i>0; i--) { 
+            // I use parsint because by default ctx.linewidth is a string
             ctx.rect(lastX + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 
                     lastY + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 1, 1);
             ctx.fill();
         };   
     } else if (drawMode === 'multilines') {
+        // I descoverd this mode by chance it's really cool 
+        // SO no comments here ?
+        // Well we have linewidth = 1px and same as pen mode but here the we dont update
+        // LastX and LastY so the paint draws multiple lines while staying in one place. REALLY COOL!
         ctx.moveTo(lastLX, lastLY);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.lineWidth = '1';
@@ -352,6 +381,8 @@ canvas.onmousemove = (e) => {
 };
 
 canvas.onmousedown = (e) => {
+    /* When we click on the mouse we switch to drawing mode the LastX LastY updates everytime
+    to connect the drawing*/
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
     if (drawMode === 'line'){
@@ -362,9 +393,13 @@ canvas.onmousedown = (e) => {
 };
 
 canvas.addEventListener('mouseup', (e) => {
+    // Here when mouse is up we get out of the drawing mode 
     isDrawing = false;
+    // we update the coords to make lines from the last coords to the new coords
     [lastLX, lastLY] = [e.offsetX, e.offsetY];
 });
+// If mouse coords are out of the scree we stop the drawing to stop the screen from drawin vertical 
+// lines when the mouse is other apps for exmple.
 canvas.addEventListener('mouseout', () => (isDrawing = false));
 // End Paint App -------------------------------------
 
@@ -419,7 +454,6 @@ class Snake {
         };
     };
 };
-
 // End Snake App ---------------------------------------
 
 // Calculator App -----------------------------------
