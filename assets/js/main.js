@@ -81,24 +81,36 @@ class Window {
         el1.addEventListener('mousedown', function handleMouseDown(e) { 
             // focusing an element when is dragged for the :focus selector
             el2.focus();
+
+            // basic Event management
             e = e || window.event;
             e.preventDefault();
+
             pos3 = e.clientX;
             pos4 = e.clientY;
+            
+            // This is to prevent the window object from sticking to the mouse cursor. 
             document.onmouseup = (e) => {
                 document.onmouseup = null;
                 document.onmousemove = null;                          
             };
-            
+
+            // move the windom with mouse coords
             document.onmousemove = (e) => {
+                // basic Event management
                 e = e || window.event;
                 e.preventDefault();
 
+                /* Here is when the magic happens we take the mouse coordinates within doc interface
+                then we substract the old ones to get the dx and dy then we take the diffrence and 
+                add it to the top and left css properties to move the window with position absolute of course.
+                */
                 pos1 = pos3 - e.clientX;
                 pos2 = pos4 - e.clientY;
                 pos3 = e.clientX;
                 pos4 = e.clientY;
-
+                // Here we update top and left attributes
+                // We prevent the window from get outside the main with a ternary.s
                 el2.style.top = el2.offsetTop < 0 ? "0" : `${el2.offsetTop - pos2}px`;
                 el2.style.left = `${el2.offsetLeft - pos1}px`;
             };
@@ -107,7 +119,9 @@ class Window {
 
     // Show el window when it's clicked
     showWindow(){
+        // We define the event if the icon trigger is main or header
         let eve = main.contains(this.icon) ? 'dblclick' : 'click';
+        // We create an event listner for the window 
         this.icon.addEventListener(eve, () => {
             if(this.window.style.display === "block") {
                 this.window.classList.add('anim-bounce');
