@@ -436,19 +436,28 @@ main {
 }
 
 .game-menu > a {
+    position: relative;
     margin: .2rem auto;
     font-family: var(--Secondary);
 }
 
-.game-menu > a::before {
-    display: none;
-    content: '>';
-    margin-right: .3rem;
+.game-menu > a:hover {
+    color: black;
 }
 
-.game-menu a:hover > 
-.game-menu a::before {
+.game-menu a:hover::before {
+    position: absolute;
+    content: '>';
+    left: -1rem;
     display: block;
+    color: var(--black);
+}
+
+.game-score {
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 5%;
 }
 
 /* Paint */
