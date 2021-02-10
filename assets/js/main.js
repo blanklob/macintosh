@@ -119,17 +119,26 @@ class Window {
 
     // Show el window when it's clicked
     showWindow(){
-        // We define the event if the icon trigger is main or header
+        // We define the event if the icon trigger is in the main or the header
+        /* bisacly iif click an icon in the main the event should be a double click because
+        we dont want to open the window when we try to move the icon, on the other side
+        the anchor tag that lunches apps on the menu dropdown in the header it's more convenient to
+        lunch an app when we click a menu item not when double clicking it */
         let eve = main.contains(this.icon) ? 'dblclick' : 'click';
         // We create an event listner for the window 
         this.icon.addEventListener(eve, () => {
+            // if the window is already open add a bouncing animation to show to the user that
+            // the window is already open.
             if(this.window.style.display === "block") {
                 this.window.classList.add('anim-bounce');
                 setTimeout(() => {
                     this.window.classList.remove('anim-bounce');
                 }, 2000);
             } else {
+                // If the window is not open we open it with display proprety set to 'block'.
                 this.window.style.display = "block";
+                // if the window deosn't have a close btn we close when we click on the overlay 
+                // just like a bootstrap modal.
                 if(!(this.closeBtn)){
                     overlay.style.display = "block";
                 };
@@ -141,11 +150,13 @@ class Window {
     closeWindowUsingBtn(){
         this.closeBtn.onclick = (e) => {
             this.window.style.display = "none"; 
+            // Reset the z-index 
             this.window.style.zIndex = "1";  
         };  
     };
 
     resizeWindow(){
+        // Resize the window with a sample transform scale animation saved within a class called 'anim-resize'
         this.resizeBtn.onclick = (e) => {this.window.classList.toggle('anim-resize');};
     };
 
@@ -158,6 +169,8 @@ class Window {
             // console.log('document.activeElement:')
             // console.log(document.activeElement);
 
+            /* Updating windows z-index so if a window is clicked it becomes when 
+            the bigger z-index in order.*/
             if(this.window === document.activeElement){
                 this.window.style.zIndex = "3";
             } else {
@@ -166,9 +179,10 @@ class Window {
         };
     };
 
-    // Close the el window when background is clicked
+    // Close the el window when overlay is clicked
     closeWindowUsingBackground(){
-        overlay.onclick = (e) => {
+        // only for windows that dont have a close btn
+        overlay.onclick = () => {
             if (this.window){
                 this.window.style.display = "none";
             };
@@ -177,6 +191,7 @@ class Window {
 
     // Runs every other method
     run() {
+        // Here we call every other method if a window object have certain properties.
         this.drag(this.icon, this.icon);
         this.isActive();
         this.resizeBtn ? this.resizeWindow() : {};
@@ -187,6 +202,7 @@ class Window {
     };
 };
 
+// Creating apps and window 
 computer = new Window('computer');
 system = new Window('system');
 folder = new Window('folder');
@@ -198,6 +214,7 @@ trash = new Window('trash');
 calculator = new Window('calculator', false);
 snake = new Window('snake', false);
 
+// Running All the apps I know there is a better way to do this :(
 computer.run();
 system.run();
 folder.run();
@@ -206,17 +223,18 @@ alarm.run();
 notePad.run();
 paint.run();
 trash.run();
-
 snake.run();
 calculator.run();
 
 // Full screen mode
+// when we click menu item in the view dropdow menu we change to full screen mode 
 const fullScreen = document.getElementById('full-screen');
 fullScreen.addEventListener('click', (e) => {
     document.documentElement.requestFullscreen().then(()=>{
         fullScreen.innerText = "Remove Full Screen";
         fullScreen.addEventListener('click', (e) => {
             document.exitFullscreen();
+            // We change the innerText two to make it more comprehensive.
             fullScreen.innerText = "Enter Full Screen";
         });
     });
