@@ -4,14 +4,26 @@ const macIcon = document.querySelector('.mac_loader');
 const main = document.getElementById('main');
 const header = document.getElementById('header');
 const overlay = document.querySelector('.window-overlay');
+const errorMsg = document.querySelector('.error_mobile');
+const splash = document.getElementById('splash');
 
 window.addEventListener("load", function(event) {
-    setTimeout(function() {
-        macIcon.remove();
-        welcome.classList.add('anim-show');
-        welcome.addEventListener('animationend', () => {
-        document.getElementById('splash').remove();
-    });}, 2000);  
+    console.log(window.innerWidth);
+    if(window.innerWidth > 849){
+        setTimeout(function() {
+            macIcon.remove();
+            welcome.classList.add('anim-show');
+            welcome.addEventListener('animationend', () => {
+            splash.remove();
+        });}, 2000); 
+    } else {
+        {setTimeout(function() {
+            macIcon.style.backgroundImage = "url(/assets/icons/sadmac.svg)";
+            macIcon.classList.remove('anim-beat');
+            splash.style.background = "#000";
+            errorMsg.innerHTML = "Sorry, a system error occured. <br> macOs deosn't work on small devices."; 
+        }, 10000);}
+    };
 });
 
 // Dropdown menu

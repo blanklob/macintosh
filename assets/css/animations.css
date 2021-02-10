@@ -30,3 +30,7 @@
 .anim-resize {
     animation: resize 0s forwards; 
 }
+
+.anim-beat {
+    animation: beat 2s infinite; 
+}

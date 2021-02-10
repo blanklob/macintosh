@@ -44,9 +44,14 @@ body {
     height: 6rem;
     background-size: contain;
     background-repeat: no-repeat;
-    animation-name: beat;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+}
+
+.error_mobile {
+    width: 70%;
+    text-align: center;
+    font-family: var(--Primary);
+    font-size: .65rem;
+    color: var(--white);
 }
 
 .welcome {
