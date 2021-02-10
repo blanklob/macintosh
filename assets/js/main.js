@@ -1,39 +1,54 @@
 // Splash page
-const welcome = document.querySelector('.welcome');
-const macIcon = document.querySelector('.mac_loader');
-const main = document.getElementById('main');
-const header = document.getElementById('header');
-const overlay = document.querySelector('.window-overlay');
-const errorMsg = document.querySelector('.error_mobile');
-const splash = document.getElementById('splash');
+// We declare nodes from the splash page 
+const welcome = document.querySelector('.welcome'),
+    macIcon = document.querySelector('.mac_loader'),
+    main = document.getElementById('main'),
+    header = document.getElementById('header'),
+    overlay = document.querySelector('.window-overlay'),
+    errorMsg = document.querySelector('.error_mobile'),
+    splash = document.getElementById('splash');
 
+// Here we listen when the doc and all assets are loaded
 window.addEventListener("load", function(e) {
-    if(window.innerWidth > 849){
+    // If the user is on large devices
+    if(window.innerWidth > 599){
         setTimeout(function() {
+            // Remove the first mac icon
             macIcon.remove();
+            // Then show the 'welcome to Macintosh message' with a cool anim
             welcome.classList.add('anim-show');
+            // If the animation is ended, and the screen is loaded we show the website
             welcome.addEventListener('animationend', () => {
             splash.remove();
+            // Two seconds for the animation to end 
         });}, 2000); 
     } else {
+        // If the user is on small devices
         {setTimeout(function() {
+            // We change the icon
             macIcon.style.backgroundImage = "url(/assets/icons/sadmac.svg)";
-            macIcon.classList.remove('anim-beat');
+            // We remove its bouncing animation
+            macIcon.classList.remove('anim-load');
+            // Change the background color and show an error message!
             splash.style.background = "#000";
             errorMsg.innerHTML = "Sorry, a system error occured. <br> macOs deosn't work on small devices."; 
+            // Fake it until you make it ;)
         }, 8000);}
     };
 });
 
 // Dropdown menu
+// We select all the menus el from the header ['file', 'edit', 'view', 'special']
 const items = document.querySelectorAll('.mac_menu > li');
-
+// When the user clicks the header we add the class 'menu-item'
+// Bref: when the header is on focus, we can see the howver effect when it's not we cant hover over it 
 header.addEventListener('click', () => {
     for (item of items){
         item.classList.add('menu-item');
     };
 });
-
+// if the user clicks the main content the header is no longer active so the hover effect
+// is disabled, it's a mac thing!!!
 main.addEventListener('click', () => {
     for (item of items){
         item.classList.remove('menu-item');
@@ -41,25 +56,30 @@ main.addEventListener('click', () => {
 });
 
 // Making icons draggable
+// Real stuff!
 class Window {
+    /* Creating window and all of it's nodes : header, body, close btn, resize btn, icon
+    Each window has an btn (this.icon) which opens the window and 
+    First time wotking with JS but this how we do it in Pyhton ;)
+    There is many window types, I decided to create one class with no subclasses for simplicity
+    I used ternary and arguments for this.
+    */ 
     constructor(selector, windowDraggable = true){
         this.icon = document.getElementById(selector);
         this.window = document.querySelector('.window.' + selector);
-        
         this.windowDraggable = windowDraggable;
         this.closeBtn = document.querySelector('.close_btn.' + selector);
         this.resizeBtn = document.querySelector('.resize_btn.' + selector);
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
-    get windowObj(){
-        return this.window;
-    }
-
     // drag just like in jquery ;)
     drag(el2, el1) {
+        // Declaring positions
         let pos1 = 0, pos2 = 0, pos3, pos4;
+        // I've used a defined function in order to remove the event when needed with removeEve..
         el1.addEventListener('mousedown', function handleMouseDown(e) { 
+            // focusing an element when is dragged for the :focus selector
             el2.focus();
             e = e || window.event;
             e.preventDefault();
@@ -117,15 +137,19 @@ class Window {
 
     // This thing has a fucking bug 
     isActive(){
-        // document.onclick = () => {
-        //     let el = this.windowObj;
-        //     if(el === document.activeElement){
-        //         el.style.zIndex = "3";
-        //     } else {
-        //         el.style.zIndex = "1";
-        //     };
-        // };
-        {};
+        document.onclick = () => {
+            // For debug
+            // console.log('this.window:')
+            // console.log(this.window);
+            // console.log('document.activeElement:')
+            // console.log(document.activeElement);
+
+            if(this.window === document.activeElement){
+                this.window.style.zIndex = "3";
+            } else {
+                this.window.style.zIndex = "1";
+            };
+        };
     };
 
     // Close the el window when background is clicked
@@ -140,6 +164,7 @@ class Window {
     // Runs every other method
     run() {
         this.drag(this.icon, this.icon);
+        this.isActive();
         this.resizeBtn ? this.resizeWindow() : {};
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
         this.window ? this.isActive(): {};
@@ -156,8 +181,8 @@ alarm = new Window('alarm');
 notePad = new Window('note-pad', false);
 paint = new Window('paint', false);
 trash = new Window('trash');
-snake = new Window('snake', false);
 calculator = new Window('calculator', false);
+snake = new Window('snake', false);
 
 computer.run();
 system.run();
@@ -167,6 +192,7 @@ alarm.run();
 notePad.run();
 paint.run();
 trash.run();
+
 snake.run();
 calculator.run();
 
@@ -189,8 +215,8 @@ pattern.onmousedown = (e) => {
 };
 
 // Time app
-var time = document.getElementById('time');
-var date = document.getElementById('date');
+var time = document.getElementById('time'),
+date = document.getElementById('date');
 const switcher = document.querySelector('.icon.switch');
 
 (function() {
@@ -199,10 +225,10 @@ const switcher = document.querySelector('.icon.switch');
         hour = minute * 60,
         day = hour * 24;  
 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
+        var today = new Date(),
+            dd = String(today.getDate()).padStart(2, '0'),
+            mm = String(today.getMonth() + 1).padStart(2, '0'),
+            yyyy = today.getFullYear();
 
         today = dd + '-' + mm + '-' + yyyy;
         date.innerText = today;
@@ -230,13 +256,13 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // Mission control
-const strokeBtns = document.querySelectorAll('.paint-stroke > .btn');
-const clearBtn = document.querySelector('.paint-cmd > .clear.btn');
-const eraserBtn = document.querySelector('.paint-cmd > .eraser.btn');
-const lineBtn = document.querySelector('.paint-cmd > .line.btn');
-const penBtn =document.querySelector('.paint-cmd > .pen.btn');
-const sprayBtn =document.querySelector('.paint-cmd > .spray.btn');
-const multilinesBtn =document.querySelector('.paint-cmd > .multilines.btn');
+const strokeBtns = document.querySelectorAll('.paint-stroke > .btn'),
+    clearBtn = document.querySelector('.paint-cmd > .clear.btn'),
+    eraserBtn = document.querySelector('.paint-cmd > .eraser.btn'),
+    lineBtn = document.querySelector('.paint-cmd > .line.btn'),
+    penBtn =document.querySelector('.paint-cmd > .pen.btn'),
+    sprayBtn =document.querySelector('.paint-cmd > .spray.btn'),
+    multilinesBtn =document.querySelector('.paint-cmd > .multilines.btn');
 
 // Coords
 let isDrawing = false,
@@ -310,165 +336,58 @@ canvas.addEventListener('mouseup', (e) => {
 canvas.addEventListener('mouseout', () => (isDrawing = false));
 // End Paint App -------------------------------------
 
-
 // Snake App -------------------------------------
-class Screen {
-    constructor() {
-        // creates a canvas  
-        this.canvas = document.getElementById('snake-canvas');
-        this.canvas.width = window.innerWidth;;
-        this.canvas.height = window.innerHeight;
-        this.rows = this.canvas.height/20;
-        this.columns = this.canvas.width/20;
-        this.ctx = this.canvas.getContext('2d');
-    }
-    
-    clear() {
-        // clear the canvas screen
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-}
+// Creating the canvas
+const snakeCanvas = document.getElementById('snake-canvas'),
+    snakeCtx = snakeCanvas.getContext('2d'),
+    gameMenu = document.getElementById('snake-menu'),
+    startBtn = document.querySelector('.start-game'),
+    settingsBtn = document.querySelector('.game-settings');
 
+// setup the canvas for the snake game
+snakeCanvas.width = window.innerWidth;
+snakeCanvas.height = window.innerHeight;
+// Creating the game grid 20*20
+var canvasRows = snakeCanvas.height/20,
+canvasColumns = snakeCanvas.width/20;
+console.log(gameMenu)
+// Starting the game 
+startBtn.addEventListener('click', (e)=>{
+    // We hide the menu and display the canvas 
+    gameMenu.style.display = 'none';
+    snakeCanvas.style.display = 'block';
+    // We create a snake for the player
+    var snakeGame = new Snake();
+    // Refresh the screen every now and then
+    window.setInterval(() => {
+        snakeGame.draw();     
+     }, 100);   
+});
+
+// Blue print for our handsome snake
 class Snake {
     constructor() {
-        // initiate snake attributes
+        // Initiate snake 
         this.part = 10;
-        this.speedChange = 10;
+        this.speed = 10;
         this.speedX = 0;
-        this.speedY = this.speedChange * -1;
-        this.screen = new Screen();
-        //this.x = this.screen.canvas.width/2;
-        //this.y = this.screen.canvas.height - 20;
+        this.speedY = this.speed * -1;
         this.tail= [{x: this.screen.canvas.width/2, y: this.screen.canvas.height - 20}]
-        this.foodX = 50;
-        this.foodY = 50;
         this.score= 0;
-        this.direction= '';
-    }
+        this.direction= null;
+    };
 
     draw() {
         // draw the snake on the screen
-        this.screen.clear();
-
-        // const head = {x: this.tail[0].x + this.speedX, y: this.tail[0].y + this.speedY};
-        // this.tail.unshift(head);
-
-        this.screen.ctx.fillStyle = 'black';
+        // We clear the canvas first
+        snakeCtx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height); 
+        snakeCtx.fillStyle = 'black';
         for(var i= 0; i< this.tail.length; i++){
-            this.screen.ctx.fillRect(this.tail[i].x, this.tail[i].y, this.part, this.part ); 
-        }
-        this.constraints();
-        this.update();
-    }
-    drawFood(){
-        this.screen.ctx.fillStyle = 'red';
-        this.screen.ctx.fillRect(this.foodX, this.foodY, this.part,this.part);
-    }
-    randFood() {
-        this.foodX=Math.round((Math.random() * (this.screen.canvas.width-10) ) / 10) * 10;
-        this.foodY=Math.round((Math.random() * (this.screen.canvas.height-10) ) / 10) * 10;
-    }
-
-    update() {
-        // updates snake's coords
-        //this.x += this.speedX;
-        //this.y += this.speedY;
-        
-        var add = {x: this.tail[0].x + this.speedX, y: this.tail[0].y + this.speedY};
-        this.tail.unshift(add);
-        this.hasEaten();
-        this.tail.pop();
-    }
-    hasEaten(){
-        for(var i= 0; i< this.tail.length; i++){
-            if(this.tail[i].x === this.foodX && this.tail[i].y===this.foodY){
-                this.score+=5;
-                //console.log(this.score)
-                //document.getElementById('score').innerHTML= this.score;
-                this.tail.push(this.tail[0]);
-                this.randFood();
-
-            }else{
-                
-            }
-        }
-    }
-
-    changeDirection(direction) {
-        switch(direction) {
-            case 'Up':
-                if(this.direction == 'Down'){break;}
-                this.speedX = 0;
-                this.speedY = this.speedChange * -1;
-                this.direction= 'Up';
-                break;
-            case 'Down':
-                if(this.direction == 'Up'){break;}
-                this.speedX = 0;
-                this.speedY = this.speedChange * 1;
-                this.direction= 'Down';
-                break;
-            case 'Right':
-                if(this.direction== 'Left'){break;}
-                this.speedY = 0;
-                this.speedX = this.speedChange * 1;
-                this.direction= 'Right';
-                break;
-            case 'Left':
-                if(this.direction == 'Right'){break;}
-                this.speedY = 0;
-                this.speedX = this.speedChange * -1;
-                this.direction= 'Left';
-                break;
-        }
-    }
-
-    constraints () {
-        for(var i=4; i<this.tail.length; i++){
-            if(this.tail[i].x == this.tail[0].x && this.tail[i].y == this.tail[0].y ){
-                //location.reload();
-                this.gameOver();
-                clearInterval(intervalID);
-            }
-        }
-        if ((this.tail[0].x > this.screen.canvas.width-10 || this.tail[0].x < 0) || 
-        (this.tail[0].y > this.screen.canvas.height-10 || this.tail[0].y < 0)){
-            // this.tail[0].x = this.screen.canvas.width/2;
-            // this.tail[0].y = this.screen.canvas.height/2;
-            // this.speedX = 0;
-            // this.speedY = 0;
-            this.gameOver();
-            //location.reload();
+            snakeCtx.fillRect(this.tail[i].x, this.tail[i].y, this.part, this.part ); 
         };
     };
+};
 
-    gameOver(){
-        this.screen.clear();
-        this.screen.ctx.fillStyle = 'red';
-        this.screen.ctx.font = '50px serif';
-        this.screen.ctx.textAlign = "center";
-        this.screen.ctx.fillText('Game Over', this.screen.canvas.width/2, this.screen.canvas.height/2);
-        this.screen.ctx.fillStyle = 'black';
-        this.screen.ctx.font = '25px serif';
-        this.screen.ctx.fillText('Score: '+ this.score, this.screen.canvas.width/2, this.screen.canvas.height/2+50);
-    }
-}
-
-const snak = new Snake();
-
-var intervalID = window.setInterval(() => {
-   // snake.screen.clear();
-    //snake.update();
-    //snake.constraints();
-    snak.draw();
-    snak.drawFood();       
-}, 200); 
-
-window.addEventListener('keydown', ((evt) => {
-    const direction = evt.key.replace('Arrow', '');
-    console.log(direction)
-    snak.changeDirection(direction);
-}));
 // End Snake App ---------------------------------------
 
 // Calculator App -----------------------------------
