@@ -29,7 +29,6 @@ body {
     background: url(/assets/icons/Squares.svg);
 }
 
-
 /* Splash screen */
 .splash_screen {
     position: relative;
@@ -89,7 +88,6 @@ body {
     background-repeat: no-repeat;
 }
 
-
 /* Header */
 .mac_bar {
     position: relative;
@@ -129,7 +127,6 @@ header:focus
 #logo:hover {
     fill: var(--white);
 }
-
 
 /* dropdown menus */
 .dropdown {
@@ -180,7 +177,6 @@ header:focus
 }
 
 /* end logo menu */
-
 .dropdown.file {
     left: 3.7rem;
 }
@@ -325,8 +321,8 @@ main {
 }
 
 .window.snake {
-    height: 28rem;
-    width: 35rem;
+    height: 23rem;
+    width: 30rem;
 }
 
 .window.calculator {
@@ -423,7 +419,39 @@ main {
     padding: .2rem 0 0 .3rem;
 
 }
+/* Snake */
+#snake-canvas {
+    display: none;
+}
 
+.game-title {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    animation: beat 1s infinite;
+}
+
+.game-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-menu > a {
+    margin: .2rem auto;
+    font-family: var(--Secondary);
+}
+
+.game-menu > a::before {
+    display: none;
+    content: '>';
+    margin-right: .3rem;
+}
+
+.game-menu a:hover > 
+.game-menu a::before {
+    display: block;
+}
+
+/* Paint */
 .paint-cmd {
     position: absolute;
     display: grid;
@@ -638,3 +666,4 @@ main {
 .window.finder .window-footer {
     font-family: var(--Secondary);
 }
+

@@ -7,8 +7,7 @@ const overlay = document.querySelector('.window-overlay');
 const errorMsg = document.querySelector('.error_mobile');
 const splash = document.getElementById('splash');
 
-window.addEventListener("load", function(event) {
-    console.log(window.innerWidth);
+window.addEventListener("load", function(e) {
     if(window.innerWidth > 849){
         setTimeout(function() {
             macIcon.remove();
@@ -22,7 +21,7 @@ window.addEventListener("load", function(event) {
             macIcon.classList.remove('anim-beat');
             splash.style.background = "#000";
             errorMsg.innerHTML = "Sorry, a system error occured. <br> macOs deosn't work on small devices."; 
-        }, 10000);}
+        }, 8000);}
     };
 });
 
@@ -126,7 +125,7 @@ class Window {
         //         el.style.zIndex = "1";
         //     };
         // };
-        {}
+        {};
     };
 
     // Close the el window when background is clicked
@@ -139,7 +138,7 @@ class Window {
     };
 
     // Runs every other method
-    run(){
+    run() {
         this.drag(this.icon, this.icon);
         this.resizeBtn ? this.resizeWindow() : {};
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
@@ -221,7 +220,7 @@ const switcher = document.querySelector('.icon.switch');
             Math.floor((now % (day)) / (hour)) + ":" 
             + Math.floor((now % (hour)) / (minute)) + ":"
             + Math.floor((now % (minute)) / second);
-        },  0)
+        },  1000)
 }());
 
 // Paint App -------------------------------------
@@ -280,7 +279,7 @@ canvas.onmousemove = (e) => {
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
     } else if (drawMode === 'spray') {
-        for (let i = 20; i>0; i--) { 
+        for (let i = 30; i>0; i--) { 
             ctx.rect(lastX + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 
                     lastY + Math.random() * parseInt(ctx.lineWidth)*2 - 10, 1, 1);
             ctx.fill();
@@ -315,12 +314,12 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
 // Snake App -------------------------------------
 class Screen {
     constructor() {
-        // creates a canvas for each app
+        // creates a canvas  
         this.canvas = document.getElementById('snake-canvas');
         this.canvas.width = window.innerWidth;;
         this.canvas.height = window.innerHeight;
-        this.rows = this.canvas.height/1000;
-        this.columns = this.canvas.width/1000;
+        this.rows = this.canvas.height/20;
+        this.columns = this.canvas.width/20;
         this.ctx = this.canvas.getContext('2d');
     }
     
@@ -440,9 +439,9 @@ class Snake {
             // this.speedY = 0;
             this.gameOver();
             //location.reload();
-        }
-        
-    }
+        };
+    };
+
     gameOver(){
         this.screen.clear();
         this.screen.ctx.fillStyle = 'red';
@@ -473,7 +472,6 @@ window.addEventListener('keydown', ((evt) => {
 // End Snake App ---------------------------------------
 
 // Calculator App -----------------------------------
-
 var display = document.getElementById('calc-res'), // input/output button
   numbers = document.querySelectorAll('.num'), // number buttons
   operators = document.querySelectorAll('.operator'), // operator buttons

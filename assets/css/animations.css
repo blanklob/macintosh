@@ -1,7 +1,12 @@
 /* Declaring animations */
 @keyframes beat {
+    0% {transform: scale(1);}
+    50% {transform: scale(.92);}
+}
+
+@keyframes load {
     0% {transform: translate(-50%,-50%) scale(1);}
-    50% {transform: translate(-50%,-50%) scale(.95);}
+    50% {transform: translate(-50%,-50%) scale(.94);}
 }
 
 @keyframes show {
@@ -24,7 +29,7 @@
 }
 
 .anim-bounce {
-    animation: bounce .2s 2;
+    animation: load .2s 2;
 }
 
 .anim-resize {
@@ -33,4 +38,8 @@
 
 .anim-beat {
     animation: beat 2s infinite; 
+}
+
+.anim-load {
+    animation: load 2s infinite; 
 }
