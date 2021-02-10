@@ -87,6 +87,8 @@ body {
 
 /* Header */
 .mac_bar {
+    position: relative;
+    z-index: 3;
     background-color: var(--white);
     width: 100vw;
     height: 2rem;
@@ -131,7 +133,7 @@ header:focus
     display: none;
     position: absolute;
     top: 2.2rem;
-    z-index: 10;
+    z-index: 3;
     background: var(--white);
     border-width: 0 2px 2px 2px;
     border-style: solid;
@@ -407,6 +409,10 @@ main {
     padding: .2rem 0 0 0;
 }
 
+.calc-pad input:active {
+    box-shadow: .1rem .1rem var(--black);
+}
+
 .calc-pad input[value="0"] {
     padding: .2rem 0 0 .3rem;
 
@@ -516,6 +522,7 @@ main {
 }
 
 .window.alarm {
+    z-index: 4;
     width: 10rem;
 }
 

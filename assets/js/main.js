@@ -20,13 +20,13 @@ const items = document.querySelectorAll('.mac_menu > li');
 header.addEventListener('click', () => {
     for (item of items){
         item.classList.add('menu-item');
-    }
+    };
 });
 
 main.addEventListener('click', () => {
     for (item of items){
         item.classList.remove('menu-item');
-    }
+    };
 });
 
 // Making icons draggable
@@ -38,7 +38,6 @@ class Window {
         this.windowDraggable = windowDraggable;
         this.closeBtn = document.querySelector('.close_btn.' + selector);
         this.resizeBtn = document.querySelector('.resize_btn.' + selector);
-        console.log(this.window);
         if(!this.windowDraggable) this.windowHeader = this.window.children[0];
     }
 
@@ -213,7 +212,7 @@ const switcher = document.querySelector('.icon.switch');
         },  0)
 }());
 
-// Paint App
+// Paint App -------------------------------------
 const canvas = document.getElementById('paint-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -298,9 +297,10 @@ canvas.addEventListener('mouseup', (e) => {
     [lastLX, lastLY] = [e.offsetX, e.offsetY];
 });
 canvas.addEventListener('mouseout', () => (isDrawing = false));
+// End Paint App -------------------------------------
 
 
-// Snake App
+// Snake App -------------------------------------
 class Screen {
     constructor() {
         // creates a canvas for each app
@@ -458,8 +458,45 @@ window.addEventListener('keydown', ((evt) => {
     console.log(direction)
     snak.changeDirection(direction);
 }));
+// End Snake App ---------------------------------------
 
-// Calculator App
+// Calculator App -----------------------------------
 
-// todo: Add some folders to the trash and others
+var display = document.getElementById('calc-res'), // input/output button
+  numbers = document.querySelectorAll('.num'), // number buttons
+  operators = document.querySelectorAll('.operator'), // operator buttons
+  resultbtn = document.getElementById('equal'), // equal button
+  clearbtn = document.getElementById('clear'), // clear button
+  resultDisplayed = false; // flag to keep an eye on what output is displayed
+
+
+// adding click handlers to number buttons
+for (let i = 0; i < numbers.length; i++) {
+  numbers[i].addEventListener("click", (e) => {
+
+    // storing current input string and its last character in variables 
+    var currentString = display.innerHTML,
+    lastChar = currentString[currentString.length - 1];
+
+    // if result is not displayed, just keep adding
+    if (resultDisplayed === false) {
+        console.log(e.target.value);
+        display.innerHTML += e.target.value;
+    } else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/") {
+      // if result is currently displayed and user pressed an operator
+      // we need to keep on adding to the string for next operation
+      resultDisplayed = false;
+      display.innerHTML += e.target.value;
+    } else {
+      // if result is currently displayed and user pressed a number
+      // we need clear the display string and add the new input to start the new opration
+      resultDisplayed = false;
+      display.innerHTML = "";
+      display.innerHTML += e.target.value;
+    };
+  });
+};
+
+
+// // todo: Add some folders to the trash and others
 
