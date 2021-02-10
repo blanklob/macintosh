@@ -467,24 +467,24 @@ var display = document.getElementById('calc-res'), // input/output button
   operators = document.querySelectorAll('.operator'), // operator buttons
   resultbtn = document.getElementById('equal'), // equal button
   clearbtn = document.getElementById('clear'), // clear button
+  eraseLastBtn = document.getElementById('erase-last'), // erase last element btn
   resultDisplayed = false; // flag to keep an eye on what output is displayed
 
 
 // adding click handlers to number buttons
 for (let i = 0; i < numbers.length; i++) {
-  numbers[i].addEventListener("click", (e) => {
-
+    numbers[i].addEventListener("click", (e) => {
     // storing current input string and its last character in variables 
     var currentString = display.innerHTML,
     lastChar = currentString[currentString.length - 1];
 
     // if result is not displayed, just keep adding
     if (resultDisplayed === false) {
-        console.log(e.target.value);
-        display.innerHTML += e.target.value;
+        if(display.innerHTML.length < 11) display.innerHTML += e.target.value;
     } else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/") {
       // if result is currently displayed and user pressed an operator
       // we need to keep on adding to the string for next operation
+      if(display.innerHTML.length < 11) display.innerHTML += e.target.value;
       resultDisplayed = false;
       display.innerHTML += e.target.value;
     } else {
@@ -496,6 +496,96 @@ for (let i = 0; i < numbers.length; i++) {
     };
   });
 };
+
+// adding click handlers to operator buttons
+for (let i = 0; i < operators.length; i++) {
+    operators[i].addEventListener("click", (e) => {
+    // storing current input string and its last character in variables - used later
+    var currentString = display.innerHTML;
+    var lastChar = currentString[currentString.length - 1];
+
+    // if last character entered is an operator, replace it with the currently pressed one
+    if (lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/") {
+      var newString = currentString.substring(0, currentString.length - 1) + e.target.value;
+      display.innerHTML = newString;
+    } else if (currentString.length == 0) {
+      // if first key pressed is an opearator, don't do anything
+      console.log("enter a number first!");
+    } else {
+      // else just add the operator pressed to the input
+      display.innerHTML += e.target.value;
+    };
+  });
+};
+
+// From stackoverflow ######
+// This function calculate number of digits in a giver decimal number
+function digitCount(value, afterDecimal = true) {
+    if(Math.floor(value) === value) return 0;
+    if(afterDecimal){return value.toString().split(".")[1].length || 0;}
+    else{return(value.toString().split(".").join('').length)};  
+};
+// ############
+
+// on click of 'equal' button
+resultbtn.addEventListener("click", (e) => {
+    // this is the string that we will be processing eg. -10+26+33-56*34/23
+    var inputString = display.innerHTML;
+
+    // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+    var numbersArr = inputString.split(/\+|\-|\*|\//g);
+    // forming an array of operators. for above string it will be: operators = ["+", "-", "*", "/"]
+    var operatorsArr = inputString.replace(/[0-9]|\./g, "").split("");
+
+    // now we are looping through the array and doing one operation at a time.
+    // first divide, then multiply, then subtraction and then addition
+    // as we move we are alterning the original numbers and operators array
+    // the final element remaining in the array will be the output
+
+    let divide = operatorsArr.indexOf("/");
+    while (divide != -1) {
+        numbersArr.splice(divide, 2, numbersArr[divide] / numbersArr[divide + 1]);
+        operatorsArr.splice(divide, 1);
+        divide = operatorsArr.indexOf("/");
+    };
+
+    let multiply = operatorsArr.indexOf("*");
+    while (multiply != -1) {
+        numbersArr.splice(multiply, 2, numbersArr[multiply] * numbersArr[multiply + 1]);
+        operatorsArr.splice(multiply, 1);
+        multiply = operatorsArr.indexOf("*");
+    };
+
+    let subtract = operatorsArr.indexOf("-");
+    while (subtract != -1) {
+        numbersArr.splice(subtract, 2, numbersArr[subtract] - numbersArr[subtract + 1]);
+        operatorsArr.splice(subtract, 1);
+        subtract = operatorsArr.indexOf("-");
+    };
+
+    let add = operatorsArr.indexOf("+");
+    while (add != -1) {
+        // using parseFloat is necessary, otherwise it will result in string concatenation :)
+        numbersArr.splice(add, 2, parseFloat(numbersArr[add]) + parseFloat(numbersArr[add + 1]));
+        operatorsArr.splice(add, 1);
+        add = operatorsArr.indexOf("+");
+    };
+
+    // displaying the output
+    digitCount(numbersArr[0]) > 3 ? display.innerHTML = numbersArr[0].toFixed(3) : display.innerHTML = numbersArr[0];
+
+    resultDisplayed = true; // turning flag if result is displayed
+});
+
+// clearing the input on press of clear
+clearbtn.addEventListener("click", () => {
+  display.innerHTML = "";
+});
+
+// Erase last element pressed byt the user
+eraseLastBtn.addEventListener("click", () => {
+    display.innerHTML = display.innerHTML.slice(0, -1);
+});
 
 
 // // todo: Add some folders to the trash and others
