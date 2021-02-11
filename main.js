@@ -194,14 +194,16 @@ class Window {
         this.resizeBtn ? this.resizeWindow() : {};
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader); 
         setInterval(() => {
-            this.windowDraggable ? this.drag(this.window, this.window) : this.window.offsetTop < 0 || this.window.offsetLeft < 0 ? 
+            this.windowDraggable ? this.drag(this.window, this.window) : this.window.offsetTop < 200 || this.window.offsetLeft < 0 ? 
             this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
-        }, 10);
+        }, 100);
         this.window ? this.isActive(): {};
         this.window ? this.showWindow() : {};
         this.closeBtn ? this.closeWindowUsingBtn() : this.closeWindowUsingBackground();
     };
 };
+
+
 
 // Creating apps and window 
 system = new Window('system');
@@ -234,6 +236,11 @@ control.run();
 search.run();
 files.run()
 list.run();
+
+setInterval(() => {
+    console.log(paint.window.offsetLeft);
+    console.log(paint.window.offsetTop);
+}, 2000);
 
 // Full screen mode
 // when we click menu item in the view dropdow menu we change to full screen mode 
@@ -594,7 +601,3 @@ clearbtn.addEventListener("click", () => {
 eraseLastBtn.addEventListener("click", () => {
     display.innerHTML = display.innerHTML.slice(0, -1);
 });
-
-
-// // todo: Add some folders to the trash and others
-
