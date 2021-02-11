@@ -62,7 +62,7 @@
                         <li id="alarm">Time Clock</li>
                         <li id="calculator">Calculator</li>
                         <li id="snake">Snake</li>
-                        <li>Control Panel</li>
+                        <li id="control">Control Panel</li>
                         <li id="paint">Paint</li>
                         <li id="note-pad">Note Pad</li>
                         <li id="puzzle">Puzzle</li>
@@ -246,6 +246,9 @@
                 <div class="window-header">
                     <span class="window-title">System 3.0 / Finder</span>
                     <button class="system close_btn"></button>
+                    <button class="system resize_btn">
+                        <div class="expand-rect"></div>
+                    </button>
                     <div class="window-bars">
                         <hr><hr><hr><hr><hr><hr>
                     </div>
@@ -314,11 +317,14 @@
                     </svg>    
                 </div>
             </section>
-            <!-- My nudes folder -->
+            <!-- My credit folder -->
             <section class="folder window noselect" tabindex="11">
                 <div class="window-header">
                     <span class="window-title">Credits Folder</span>
                     <button class="folder close_btn"></button>
+                    <button class="folder resize_btn">
+                        <div class="expand-rect"></div>
+                    </button>
                     <div class="window-bars">
                         <hr><hr><hr><hr><hr><hr>
                     </div>
@@ -536,6 +542,22 @@
                             <span>2</span>
                         </div>
                     </div>
+                </div>
+            </section>
+            <!-- Control Panel Window -->
+            <section class="control window noselect" tabindex="9">
+                <div class="window-header">
+                    <span class="window-title">Control Panel</span>
+                    <button class="control close_btn"></button>
+                    <button class="control resize_btn">
+                        <div class="expand-rect"></div>
+                    </button>
+                    <div class="window-bars">
+                        <hr><hr><hr><hr><hr><hr>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div class="control-panel"></div>
                 </div>
             </section>
         </div>

@@ -444,6 +444,11 @@ main {
     width: 45rem;
 }
 
+.window.control {
+    height: 35rem;
+    width: 43rem;
+}
+
 .window.snake {
     height: 23rem;
     width: 30rem;
@@ -526,6 +531,21 @@ main {
 #plus {
     grid-column: 4;
     grid-row: 4/6 ;
+}
+
+.control > .window-body {
+    background: var(--black);
+}
+
+.control .control-panel {
+    position: relative;
+    top: -3rem;
+    left: -.6rem;
+    height: 40rem;
+    width: 45rem;
+    background: url(/assets/icons/Control\ Panel.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .calc-pad input {

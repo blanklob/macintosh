@@ -4,6 +4,7 @@
     --black: #000;
     --Primary: "ChicagoFLF", sans-serif;
     --Secondary: "Geneva", sans-serif;
+    overflow: hidden;
 }
 
 
