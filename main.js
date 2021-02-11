@@ -207,11 +207,11 @@ paint = new Window('paint', false);
 trash = new Window('trash');
 calculator = new Window('calculator', false);
 snake = new Window('snake', false);
-puzzle = new Window('puzzle', false);
-control = new Window('control', false);
-search = new Window('search', false);
-files = new Window('files', false);
-list = new Window('list', false);
+puzzle = new Window('puzzle');
+control = new Window('control');
+search = new Window('search');
+files = new Window('files');
+list = new Window('list');
 
 // Running All the apps I know there is a better way to do this :(
 system.run();

@@ -222,13 +222,19 @@ main {
     float: right;
 }
 
-
 .folder > .window-body {
     width: 90%;
     float: left;
     margin-left: 1.5rem;
 }
 
+.credit-icon figcaption:hover  {
+    background-color: var(--black) !important;
+}
+
+.credit-icon figcaption:hover > a {
+    color: var(--white);
+}
 
 .list > .window-body {
     width: 80%;
