@@ -16,8 +16,14 @@ a {
     text-decoration: none;
 }
 
+a,
+a label {
+    cursor: default;
+}
+
 a:hover {
     color: var(--white);
+    cursor: default;
 }
 
 body {
