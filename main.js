@@ -391,6 +391,12 @@ canvas.onmousedown = (e) => {
     to connect the drawing*/
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
+    /* If we are out of the line mode the last x and last y are valued to current mouse position
+    which means that 
+                    ctx.moveTo(lastLX=e.offsetX, lastLY=e.offsetY);
+                    ctx.lineTo(e.offsetX, e.offsetY);
+    this will draw a point instead of connecting a line to the last position.
+    */
     if(isOut)[lastLX, lastLY] = [e.offsetX, e.offsetY];
     if (drawMode === 'line'){
         ctx.beginPath();
@@ -403,6 +409,7 @@ canvas.onmousedown = (e) => {
 canvas.addEventListener('mouseup', (e) => {
     // Here when mouse is up we get out of the drawing mode 
     isDrawing = false;
+    // We are out of the line mode 
     isOut = false;
     // we update the coords to make lines from the last coords to the new coords
     [lastLX, lastLY] = [e.offsetX, e.offsetY];
@@ -482,7 +489,6 @@ for (let i = 0; i < numbers.length; i++) {
       // we need to keep on adding to the string for next operation
       if(display.innerHTML.length < 11) display.innerHTML += e.target.value;
       resultDisplayed = false;
-      display.innerHTML += e.target.value;
     } else {
       // if result is currently displayed and user pressed a number
       // we need clear the display string and add the new input to start the new opration
