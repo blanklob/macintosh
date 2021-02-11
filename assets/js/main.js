@@ -198,7 +198,6 @@ class Window {
 };
 
 // Creating apps and window 
-computer = new Window('computer');
 system = new Window('system');
 folder = new Window('folder');
 finder = new Window('finder');
@@ -211,10 +210,10 @@ snake = new Window('snake', false);
 puzzle = new Window('puzzle', false);
 control = new Window('control', false);
 search = new Window('search', false);
-
+files = new Window('files', false);
+list = new Window('list', false);
 
 // Running All the apps I know there is a better way to do this :(
-computer.run();
 system.run();
 folder.run();
 finder.run();
@@ -227,6 +226,8 @@ calculator.run();
 puzzle.run();
 control.run();
 search.run();
+files.run()
+list.run();
 
 // Full screen mode
 // when we click menu item in the view dropdow menu we change to full screen mode 

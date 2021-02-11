@@ -229,7 +229,24 @@ main {
     margin-left: 1.5rem;
 }
 
+
+.list > .window-body {
+    width: 80%;
+    float: left;
+    margin-left: 1.5rem;
+}
+
+.list .v-scroll {
+    height: 89%;
+}
+
 .system > .window-body {
+    width: 90%;
+    float: left;
+    margin-left: 1.5rem;
+}
+
+.files > .window-body {
     width: 90%;
     float: left;
     margin-left: 1.5rem;
@@ -344,7 +361,7 @@ main {
     left: 11.5rem;
 }
 
-.icon.computer {
+.icon.paint {
     top: 11rem;
     left: 1rem;
 }
@@ -388,10 +405,20 @@ main {
     opacity: 0;
 }
 
+.window.files {
+    width: 45rem;
+    height: 22rem;
+}
+
 .window.puzzle {
     border-radius: .8rem;
     background: url(/assets/icons/scrollswatch.svg);
     background-color: var(--white);
+}
+
+.window.list {
+    height: 15rem;
+    width: 30rem;
 }
 
 .window-header.puzzle {
@@ -479,7 +506,6 @@ main {
     margin: auto;
     background-color: white;
     border-radius: .6rem;
-
 }
 
 .search > .window-body {
