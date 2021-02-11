@@ -22,6 +22,10 @@
     100% {transform: scale(.4);}
 }
 
+@keyframes hideandshow {
+    50% {opacity: .1;}
+}
+
 /* Assigning animations */
 .anim-show {
     animation: show 2s forwards;

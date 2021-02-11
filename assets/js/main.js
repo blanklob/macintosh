@@ -210,6 +210,7 @@ calculator = new Window('calculator', false);
 snake = new Window('snake', false);
 puzzle = new Window('puzzle', false);
 control = new Window('control', false);
+search = new Window('search', false);
 
 
 // Running All the apps I know there is a better way to do this :(
@@ -225,6 +226,7 @@ snake.run();
 calculator.run();
 puzzle.run();
 control.run();
+search.run();
 
 // Full screen mode
 // when we click menu item in the view dropdow menu we change to full screen mode 

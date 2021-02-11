@@ -445,7 +445,7 @@ main {
 }
 
 .window.control {
-    height: 35rem;
+    height: 34.5rem;
     width: 43rem;
 }
 
@@ -453,6 +453,7 @@ main {
     height: 23rem;
     width: 30rem;
 }
+
 
 .window.calculator {
     height: 16rem;
@@ -473,6 +474,19 @@ main {
     background-color: white;
     border-radius: .6rem;
 
+}
+
+.search > .window-body {
+    margin: 0;
+}
+
+.search {
+    height: 18.4rem;
+    width: 44rem;
+}
+
+#line {
+    animation: hideandshow 1.5s infinite;
 }
 
 .calc-title, .puzzle-title {
@@ -537,15 +551,12 @@ main {
     background: var(--black);
 }
 
-.control .control-panel {
+.control .control-panel > svg {
     position: relative;
-    top: -3rem;
+    top: -5.5rem;
     left: -.6rem;
     height: 40rem;
     width: 45rem;
-    background: url(/assets/icons/Control\ Panel.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 .calc-pad input {
