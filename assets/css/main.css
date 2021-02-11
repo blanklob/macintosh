@@ -216,6 +216,77 @@ main {
     float: right;
 }
 
+
+.folder > .window-body {
+    width: 90%;
+    float: left;
+    margin-left: 1.5rem;
+}
+
+.v-scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 92.5%;
+    width: 1.8rem;
+    float: right;
+    border-left: 2px solid var(--black);
+    text-align: center;
+}
+
+.h-scroll {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.8rem;
+    border-top: solid 2px var(--black);
+}
+
+.bottom-icon {
+    border-top: 2px solid var(--black);
+    padding: .5rem 0 2.2rem 0;
+}
+
+.top-icon {
+    border-bottom: 2px solid var(--black);
+    padding: .3rem 0;
+}
+
+.bottom-icon svg {
+    transform: rotate(180deg);
+}
+
+
+.right-icon {
+    padding: 0 .3rem 0 .2rem ;
+    border-right: 2px solid var(--black);
+}
+
+.left-icon {
+    padding: 0 2.1rem 0 .4rem ;
+    border-left: 2px solid var(--black);
+}
+
+.right-icon svg {
+    position: relative;
+    top: .3rem;
+    transform: rotate(-90deg);
+}
+
+.left-icon svg {
+    position: relative;
+    top: .35rem;
+    transform: rotate(90deg);
+}
+
+.resize-icon {
+    position: absolute;
+    bottom: .25rem;
+    right: .4rem;
+}
+
 .icon {
     position: absolute;
     z-index: 1;
@@ -233,7 +304,7 @@ main {
 
 .icon.folder {
     top: 4rem;
-    left: 1rem;
+    left: 1.5rem;
 }
 
 .icon.system-folder {
