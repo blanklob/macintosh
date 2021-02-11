@@ -94,7 +94,6 @@
                 <li>Special
                     <ul class="dropdown special">
                         <li><a href="mailto:youness.id-bakkasse@hetic.net?subject=Bugs, bugs are everywhere !!">Report a Bug...</a></li>
-                        <li>Credit</li>
                     </ul> 
                 </li>
             </ul>
@@ -105,16 +104,6 @@
             <section class="desktop-icons">
                 <!-- Floppy Icon -->
                 <figure id="system" class="icon system" tabindex="3">
-                    <svg width="55" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.5 46.3475H43.5C44.6046 46.3475 45.5 45.4521 45.5 44.3475V8.23414C45.5 7.77527 45.3422 7.33034 45.0531 6.97401L40.8062 1.73986C40.4264 1.27182 39.8559 1 39.2531 1H2.5C1.39543 1 0.5 1.89543 0.5 3V44.3475C0.5 45.4521 1.39543 46.3475 2.5 46.3475Z" fill="white" stroke="black"/>
-                        <path d="M6.5882 47V29.7518C6.5882 28.6472 7.48363 27.7518 8.5882 27.7518H37.9411C39.0457 27.7518 39.9411 28.6472 39.9411 29.7518V47" stroke="black"/>
-                        <path d="M34.1176 1.00002L34.1176 14.0071C34.1176 15.1117 33.2222 16.0071 32.1176 16.0071L12.8235 16.0071C11.7189 16.0071 10.8235 15.1117 10.8235 14.0071L10.8235 1.00002" stroke="black"/>
-                        <rect x="23.5" y="4.10992" width="5.88235" height="8.78723" rx="1.5" fill="white" stroke="black"/>
-                    </svg>                        
-                    <figcaption class="icon-title">System Software</figcaption>
-                </figure>
-                <!-- Computer Icon -->
-                <figure id="computer" class="icon computer" tabindex="4">
                     <svg width="55" viewBox="0 0 37 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="0.5" width="35" height="39" rx="1.5" fill="white" stroke="black"/>
                         <rect x="5" y="4.5" width="27" height="20" rx="1.5" fill="white" stroke="black"/>
@@ -123,6 +112,17 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 7H8.5V8H7.5V7ZM7.5 10H8.5V11H7.5V10ZM8.5 13H7.5V14H8.5V13ZM7.5 16H8.5V17H7.5V16ZM8.5 19H7.5V20H8.5V19ZM10.5 7H11.5V8H10.5V7ZM11.5 10H10.5V11H11.5V10ZM10.5 13H11.5V14H10.5V13ZM11.5 16H10.5V17H11.5V16ZM10.5 19H11.5V20H10.5V19ZM14.5 7H13.5V8H14.5V7ZM13.5 10H14.5V11H13.5V10ZM14.5 19H13.5V20H14.5V19ZM16.5 7H17.5V8H16.5V7ZM17.5 10H16.5V11H17.5V10ZM19.5 7H20.5V8H19.5V7ZM23.5 7H22.5V8H23.5V7Z" fill="black"/>
                     </svg>                        
                     <figcaption class="icon-title">Computer</figcaption>
+                </figure>
+                <!-- MacPaint Icon -->
+                <figure id="computer" class="icon computer" tabindex="4">
+                    <svg width="67" viewBox="0 0 47 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.4524 1L1.5 23.2581L23.8492 47L44.8016 24.7419L22.4524 1Z" fill="white" stroke="black" stroke-width="1.3"/>
+                        <path d="M34.3254 22.7742L41.3095 30.1935V39.0968H38.5158V37.6129H28.0397L26.6428 36.129H25.246L21.0555 31.6774V30.1935L22.4524 28.7097V27.2258L26.6428 22.7742H34.3254Z" fill="white"/>
+                        <path d="M22.4524 28.7097V27.2258L26.6428 22.7742H34.3254L41.3095 30.1935V39.0968H38.5158V37.6129H28.0397L26.6428 36.129H25.246L21.0555 31.6774V30.1935M22.4524 28.7097H25.246M22.4524 28.7097L21.0555 30.1935M25.246 28.7097L26.6428 27.2258H28.0397L29.4365 28.7097V30.1935M25.246 28.7097V30.1935L26.6428 31.6774H28.0397L29.4365 30.1935M29.4365 30.1935H35.7222M21.0555 30.1935H16.8651" stroke="black"/>
+                        <rect x="41.3095" y="29.4517" width="4.19048" height="11.871" fill="black"/>
+                        <rect x="25.246" y="29.4517" width="4.19048" height="1.48387" fill="black"/>
+                    </svg>                                                                        
+                    <figcaption class="icon-title">MacPaint</figcaption>
                 </figure>
                 <!-- Folder Icon -->
                 <figure id="folder" class="icon folder" tabindex="5">
@@ -155,7 +155,14 @@
                         <hr><hr><hr><hr><hr><hr>
                     </div>
                 </div>
-                <div class="window-body">
+                <div class="window-body window-grid">
+                    <figure class="system-folder" tabindex="21">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                       
+                        <figcaption class="icon-title">2020</figcaption>
+                    </figure>
                 </div>
             </section>
             <!-- Paint App -->
@@ -230,25 +237,100 @@
             <!-- System folder -->
             <section class="system window noselect" tabindex="10">
                 <div class="window-header">
-                    <span class="window-title">System Software</span>
+                    <span class="window-title">System 3.0 / Finder</span>
                     <button class="system close_btn"></button>
                     <div class="window-bars">
                         <hr><hr><hr><hr><hr><hr>
                     </div>
                 </div>
-                <div class="window-body">
+                <div class="window-body window-grid">
+                    <figure class="system-folder" tabindex="22">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                       
+                        <figcaption class="icon-title">System Folder</figcaption>
+                    </figure>
+                    <figure class="software-icon" tabindex="23">
+                        <svg width="52" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 46.3475H43.5C44.6046 46.3475 45.5 45.4521 45.5 44.3475V8.23414C45.5 7.77527 45.3422 7.33034 45.0531 6.97401L40.8062 1.73986C40.4264 1.27182 39.8559 1 39.2531 1H2.5C1.39543 1 0.5 1.89543 0.5 3V44.3475C0.5 45.4521 1.39543 46.3475 2.5 46.3475Z" fill="white" stroke="black"/>
+                            <path d="M6.5882 47V29.7518C6.5882 28.6472 7.48363 27.7518 8.5882 27.7518H37.9411C39.0457 27.7518 39.9411 28.6472 39.9411 29.7518V47" stroke="black"/>
+                            <path d="M34.1176 1.00002L34.1176 14.0071C34.1176 15.1117 33.2222 16.0071 32.1176 16.0071L12.8235 16.0071C11.7189 16.0071 10.8235 15.1117 10.8235 14.0071L10.8235 1.00002" stroke="black"/>
+                            <rect x="23.5" y="4.10992" width="5.88235" height="8.78723" rx="1.5" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">System Software</figcaption>
+                    </figure>
+                    <figure class="printer-icon" tabindex="23">
+                        <svg width="70" viewBox="0 0 50 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9.42969" y="0.5" width="26" height="25" stroke="black"/>
+                            <rect x="1.99219" y="25.5" width="47" height="14" stroke="black"/>
+                            <rect x="1.05469" y="25.5" width="42" height="20" fill="white" stroke="black"/>
+                            <rect x="6.17969" y="25.5" width="32" height="6" stroke="black"/>
+                            <rect x="1.00781" y="25.5" width="42" height="3" stroke="black"/>
+                            <rect x="1.02344" y="25.5" width="42" height="11" stroke="black"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4297 6H17.4297V7H19.4297V6ZM21.4297 10V9H17.4297V10H21.4297ZM17.4297 12H22.4297V13H17.4297V12ZM25.4297 16V15H17.4297V16H25.4297ZM17.4297 18H22.4297V19H17.4297V18ZM28.4297 12H23.4297V13H28.4297V12ZM20.4297 6H24.4297V7H20.4297V6ZM25.4297 9H22.4297V10H25.4297V9ZM25.4297 6H28.4297V7H25.4297V6ZM28.4297 9H26.4297V10H28.4297V9ZM26.4297 15H28.4297V16H26.4297V15ZM28.4297 18H23.4297V19H28.4297V18Z" fill="black"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4297 3H13.4297V4H12.4297V3ZM12.4297 6H13.4297V7H12.4297V6ZM13.4297 9H12.4297V10H13.4297V9ZM12.4297 12H13.4297V13H12.4297V12ZM13.4297 15H12.4297V16H13.4297V15ZM12.4297 18H13.4297V19H12.4297V18ZM13.4297 21H12.4297V22H13.4297V21Z" fill="black"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M32.4297 3H33.4297V4H32.4297V3ZM32.4297 6H33.4297V7H32.4297V6ZM33.4297 9H32.4297V10H33.4297V9ZM32.4297 12H33.4297V13H32.4297V12ZM33.4297 15H32.4297V16H33.4297V15ZM32.4297 18H33.4297V19H32.4297V18ZM33.4297 21H32.4297V22H33.4297V21Z" fill="black"/>
+                            <rect x="5.42969" y="41" width="1" height="1" fill="black"/>
+                        </svg>                    
+                        <figcaption class="icon-title">ImageWriter</figcaption>
+                    </figure>
                 </div>
             </section>
             <!-- My nudes folder -->
             <section class="folder window noselect" tabindex="11">
                 <div class="window-header">
-                    <span class="window-title">My Nudes</span>
+                    <span class="window-title">Credit / My Nudes</span>
                     <button class="folder close_btn"></button>
                     <div class="window-bars">
                         <hr><hr><hr><hr><hr><hr>
                     </div>
                 </div>
-                <div class="window-body">
+                <div class="window-body window-grid">
+                    <figure class="credit-icon  youness-icon">
+                        <svg width="52" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 46.3475H43.5C44.6046 46.3475 45.5 45.4521 45.5 44.3475V8.23414C45.5 7.77527 45.3422 7.33034 45.0531 6.97401L40.8062 1.73986C40.4264 1.27182 39.8559 1 39.2531 1H2.5C1.39543 1 0.5 1.89543 0.5 3V44.3475C0.5 45.4521 1.39543 46.3475 2.5 46.3475Z" fill="white" stroke="black"/>
+                            <path d="M6.5882 47V29.7518C6.5882 28.6472 7.48363 27.7518 8.5882 27.7518H37.9411C39.0457 27.7518 39.9411 28.6472 39.9411 29.7518V47" stroke="black"/>
+                            <path d="M34.1176 1.00002L34.1176 14.0071C34.1176 15.1117 33.2222 16.0071 32.1176 16.0071L12.8235 16.0071C11.7189 16.0071 10.8235 15.1117 10.8235 14.0071L10.8235 1.00002" stroke="black"/>
+                            <rect x="23.5" y="4.10992" width="5.88235" height="8.78723" rx="1.5" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">Youness Id bakkasse</figcaption>
+                    </figure>
+                    <figure class="credit-icon yassine-icon">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">Yassine Bentot</figcaption>
+                    </figure>
+                    <figure class="credit-icon  ouma-icon">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                   
+                        <figcaption class="icon-title">Oumaima Bentot</figcaption>
+                    </figure>
+                    <figure class="credit-icon  mathias-icon">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">Mathiasse Bentot</figcaption>
+                    </figure>
+                    <figure class="credit-icon  mathias-icon">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">Imrane Bentot</figcaption>
+                    </figure>
+                    <figure class="credit-icon  mathias-icon">
+                        <svg width="60" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="6" width="45" height="29" rx="1.5" fill="white" stroke="black"/>
+                            <path d="M7.41421 1.58579L3 6H22L18.0959 1.66207C17.7166 1.24064 17.1762 1 16.6093 1H8.82843C8.29799 1 7.78929 1.21071 7.41421 1.58579Z" fill="white" stroke="black"/>
+                        </svg>                  
+                        <figcaption class="icon-title">Maxence Bentot</figcaption>
+                    </figure>
                 </div>
             </section>
             <!-- Note pad App -->
@@ -318,8 +400,7 @@
                     <div id="snake-menu" class="snake-game vh-align">
                         <h2 class="game-title">Snake</h2>
                         <div class="game-menu">
-                            <a class="start-game">Start game</a>
-                            <a class="game-settings">Settings</a>
+                            <a class="start-game">New Game</a>
                         </div> 
                     </div>
                     <div class="game-score">score: 0</div>   

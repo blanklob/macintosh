@@ -232,8 +232,18 @@ main {
 }
 
 .icon.folder {
-    top: 3rem;
+    top: 4rem;
     left: 1rem;
+}
+
+.icon.system-folder {
+    top: 4.2rem;
+    left: 2rem;
+}
+
+.icon.sys-icon {
+    top: 3.5rem;
+    left: 12rem;
 }
 
 .icon.trash {
@@ -243,7 +253,12 @@ main {
 
 .icon.system {
     top: 21rem;
-    left: -1rem;
+    left: 1rem;
+}
+
+.software-icon {
+    top: 3.8rem;
+    left: 11.5rem;
 }
 
 .icon.computer {
@@ -292,7 +307,7 @@ main {
 
 .window.trash {
     height: 20rem;
-    width: 25rem;
+    width: 30rem;
 }
 
 .window.computer {
@@ -301,13 +316,13 @@ main {
 }
 
 .window.system {
-    height: 30rem;
-    width: 20rem;
+    height: 25rem;
+    width: 40rem;
 }
 
 .window.folder {
-    height: 10rem;
-    width: 10rem;
+    height: 22rem;
+    width: 38rem;
 }
 
 .window.finder {
@@ -424,9 +439,13 @@ main {
     display: none;
 }
 
+.snake-game {
+    top: 43%;
+}
+
 .game-title {
-    margin-bottom: 3rem;
-    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
     animation: beat 1s infinite;
 }
 
@@ -649,6 +668,15 @@ main {
     height: 92%;
     width: 100%;
     margin: .3rem 0;
+}
+
+.window-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-row-gap: 2rem;
+    margin: 2rem auto;
+    max-width: 95%;
 }
 
 /* No header windows  */

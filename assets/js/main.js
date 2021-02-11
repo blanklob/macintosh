@@ -324,7 +324,6 @@ sprayBtn.onclick = () => {drawMode = 'spray'; ctx.strokeStyle = '#000';};
 multilinesBtn.onclick = () => {drawMode = 'multilines'; ctx.strokeStyle = '#000';};
 eraserBtn.onclick = (e) => {drawMode = 'pen'; ctx.strokeStyle = '#fff'; };
 
-
 // Clear canvas on one click.
 clearBtn.onclick = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  
@@ -421,8 +420,7 @@ console.log(gameMenu)
 // Starting the game 
 startBtn.addEventListener('click', (e)=>{
     // We hide the menu and display the canvas 
-    gameMenu.style.display = 'none';
-    snakeCanvas.style.display = 'block';
+    showScreen(0);
     // We create a snake for the player
     var snakeGame = new Snake();
     // Refresh the screen every now and then
@@ -431,27 +429,24 @@ startBtn.addEventListener('click', (e)=>{
      }, 100);   
 });
 
-// Blue print for our handsome snake
-class Snake {
-    constructor() {
-        // Initiate snake 
-        this.part = 10;
-        this.speed = 10;
-        this.speedX = 0;
-        this.speedY = this.speed * -1;
-        this.tail= [{x: this.screen.canvas.width/2, y: this.screen.canvas.height - 20}]
-        this.score= 0;
-        this.direction= null;
-    };
 
-    draw() {
-        // draw the snake on the screen
-        // We clear the canvas first
-        snakeCtx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height); 
-        snakeCtx.fillStyle = 'black';
-        for(var i= 0; i< this.tail.length; i++){
-            snakeCtx.fillRect(this.tail[i].x, this.tail[i].y, this.part, this.part ); 
-        };
+
+
+
+
+// 0 for the snake game
+// 1 for the main menu
+var showScreen = (opt) => {
+    switch(opt){
+        case 0:  
+            snakeCanvas.style.display = "block";
+            gameMenu.style.display = "none";
+            break;
+
+        case 1:  
+            snakeCanvas.style.display = "none";
+            gameMenu.style.display = "block";
+            break;
     };
 };
 // End Snake App ---------------------------------------
