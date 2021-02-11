@@ -11,7 +11,7 @@ const welcome = document.querySelector('.welcome'),
 // Here we listen when the doc and all assets are loaded
 window.addEventListener("load", function(e) {
     // If the user is on large devices
-    if(window.innerWidth > 599){
+    if(window.innerWidth > 699){
         setTimeout(function() {
             // Remove the first mac icon
             macIcon.remove();
@@ -312,25 +312,29 @@ const strokeBtns = document.querySelectorAll('.paint-stroke > .btn'),
 // Coords
 // Here we define the pen previous coords
 let isDrawing = false,
+isOut = false,
+eraseMode = false,
 lastX = 0,
 lastY = 0,
-lastLY = 0,
-lastLX = 0;
+lastLY,
+lastLX;
 
 // Draw modes
 // Bisacly we have 4 drawing modes listed below when we click a btn we switch between modes
 // exept for the clean mode we use a white stroke style to erase everything since the canvas is by default white.
 let drawMode = 'pen';
-lineBtn.onclick = () => {drawMode = 'line'; ctx.strokeStyle = '#000';};
-penBtn.onclick = () => { drawMode = 'pen'; ctx.strokeStyle = '#000';};
-sprayBtn.onclick = () => {drawMode = 'spray'; ctx.strokeStyle = '#000';};
-multilinesBtn.onclick = () => {drawMode = 'multilines'; ctx.strokeStyle = '#000';};
-eraserBtn.onclick = (e) => {drawMode = 'pen'; ctx.strokeStyle = '#fff'; };
+lineBtn.onclick = (e) => {drawMode = 'line'; ctx.strokeStyle = '#000'; isOut=true; eraseMode = false;};
+penBtn.onclick = () => { drawMode = 'pen'; ctx.strokeStyle = '#000'; eraseMode = false;};
+sprayBtn.onclick = () => {drawMode = 'spray'; ctx.strokeStyle = '#000'; eraseMode = false;};
+multilinesBtn.onclick = () => {drawMode = 'multilines'; ctx.strokeStyle = '#000'; eraseMode = false; isOut=true;};
+eraserBtn.onclick = () => {drawMode = 'pen'; ctx.strokeStyle = '#fff'; eraseMode = true;};
+
+ctx.lineWidth = "2";
 
 // Clear canvas on one click.
 clearBtn.onclick = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  
-    [lastLX, lastLY] = [canvas.offsetX, canvas.offsetY];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    isOut = true;  
 };
 
 // Stroke styles
@@ -340,7 +344,7 @@ ctx.lineCap = 'round';
 for (let btn of strokeBtns) {
     btn.onclick = (e) => {
         ctx.lineWidth = btn.id;
-        ctx.strokeStyle = '#000';
+        eraseMode ? ctx.strokeStyle = '#fff' : ctx.strokeStyle = '#000';
     };
 };
 
@@ -387,7 +391,9 @@ canvas.onmousedown = (e) => {
     to connect the drawing*/
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
+    if(isOut)[lastLX, lastLY] = [e.offsetX, e.offsetY];
     if (drawMode === 'line'){
+        ctx.beginPath();
         ctx.moveTo(lastLX, lastLY);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
@@ -397,6 +403,7 @@ canvas.onmousedown = (e) => {
 canvas.addEventListener('mouseup', (e) => {
     // Here when mouse is up we get out of the drawing mode 
     isDrawing = false;
+    isOut = false;
     // we update the coords to make lines from the last coords to the new coords
     [lastLX, lastLY] = [e.offsetX, e.offsetY];
 });
