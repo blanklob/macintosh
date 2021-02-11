@@ -162,21 +162,16 @@ class Window {
 
     // This thing has a fucking bug 
     isActive(){
-        document.onclick = () => {
-            // For debug
-            // console.log('this.window:')
-            // console.log(this.window);
-            // console.log('document.activeElement:')
-            // console.log(document.activeElement);
-
+        this.window.onmousedown = () => {
+            this.window.style.zIndex = "3";
             /* Updating windows z-index so if a window is clicked it becomes when 
             the bigger z-index in order.*/
-            if(this.window === document.activeElement){
-                this.window.style.zIndex = "3";
-            } else {
-                this.window.style.zIndex = "1";
-            };
-        };
+            setInterval((e)=>{
+                if(this.window !== document.activeElement) {
+                    this.window.style.zIndex = "1";
+                };
+            }, 100);
+        };  
     };
 
     // Close the el window when overlay is clicked
@@ -213,6 +208,8 @@ paint = new Window('paint', false);
 trash = new Window('trash');
 calculator = new Window('calculator', false);
 snake = new Window('snake', false);
+puzzle = new Window('puzzle', false);
+
 
 // Running All the apps I know there is a better way to do this :(
 computer.run();
@@ -225,6 +222,7 @@ paint.run();
 trash.run();
 snake.run();
 calculator.run();
+puzzle.run();
 
 // Full screen mode
 // when we click menu item in the view dropdow menu we change to full screen mode 
@@ -428,10 +426,6 @@ startBtn.addEventListener('click', (e)=>{
         snakeGame.draw();     
      }, 100);   
 });
-
-
-
-
 
 
 // 0 for the snake game
