@@ -74,7 +74,7 @@ class Window {
     }
 
     // drag just like in jquery ;)
-    drag(el2, el1) {
+    drag(el2, el1, foo) {
         // Declaring positions
         let pos1 = 0, pos2 = 0, pos3, pos4;
         // I've used a defined function in order to remove the event when needed with removeEve..
@@ -115,7 +115,7 @@ class Window {
                 el2.style.top = el2.offsetTop < 0 ? "0" : `${el2.offsetTop - pos2}px`;
                 el2.style.left = `${el2.offsetLeft - pos1}px`;
             };
-            el1.removeEventListener('mousedown', handleMouseDown);
+            if(foo) el1.removeEventListener('mousedown', handleMouseDown);
         });
     };
 
@@ -189,13 +189,13 @@ class Window {
     // Runs every other method
     run() {
         // Here we call every other method if a window object have certain properties.
-        this.drag(this.icon, this.icon);
+        this.drag(this.icon, this.icon, false);
         this.isActive();
         this.resizeBtn ? this.resizeWindow() : {};
         this.windowDraggable ? this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader); 
         setInterval(() => {
-            this.windowDraggable ? this.drag(this.window, this.window) : this.window.offsetTop < 200 || this.window.offsetLeft < 0 ? 
-            this.drag(this.window, this.window) : this.drag(this.window, this.windowHeader);
+            this.windowDraggable ? this.drag(this.window, this.window, true) : this.window.offsetTop < 200 || this.window.offsetLeft < 0 ? 
+            this.drag(this.window, this.window, true) : this.drag(this.window, this.windowHeader, true);
         }, 100);
         this.window ? this.isActive(): {};
         this.window ? this.showWindow() : {};
