@@ -518,7 +518,7 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
             snake.unshift({x: _x, y: _y});
 
             // When snake hits the wall
-            if (snake[0].x < 0 || snake[0].x == snakeCanvas.width / 10 || snake[0].y < 0 || snake[0].y == snakeCanvas.height / 10){
+            if (snake[0].x < 0 || snake[0].x == snakeCanvas.width / 10 || snake[0].y < 0 || snake[0].y == snakeCanvas.height / 10 ){
                 showScreen(2);
                 // getting out of the loop (the function)
                 return;
