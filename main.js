@@ -435,7 +435,7 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
     var snake,
     snakeDir,
 	snakeNextDir,
-    snakeSpeed = 200,
+    snakeSpeed = 100,
     // Food object
     food = {x: 0, y: 0},
     
