@@ -2,7 +2,7 @@
 
 <h1 align="center"> Project Macintosh 128K</h1>
 
-<p align="center"> ExpeCheck out how deos Computers User Interface look like back in the 80s, all in your Web Browser. </p>
+<p align="center"> Experience how deos computer's User Interface look like back in the 80s, all in your Web Browser.</p>
 
 <hr/>
 
@@ -17,40 +17,20 @@
   <li>Mac UI</li>
 </ul>
 
-<h3> Demo -> Show me what you got </h3>
-
-<a href="#"> Link to your awesome Demo </a>
-
-<a href="#"> Another Link to your awesome Demo </a>
-
-<h3> Code Demo </h3>
-
-```html
-
-We will use markdown for the Syntax Highlighting
-
-<ul>
-  <li>Beautiful Starter Template for README.md</li>
-  <li>Key feature num. 2</li>
-  <li>Key feature num. 3</li>
-  <li>Key feature num. 4</li>
-</ul>
-
-```
-
-<h3> Download & Installation </h3>
-
+<h3> Download </h3>
+Start your terminal and type : 
 ```shell
-$ npm i boilerplate-readme-template
+git clone https://github.com/younessidbakkasse/ProjectMacintosh
 ```
-<h3>Team</h3>
-Keep it simple. Keep it minimal. Don't put every single feature just because you can.
 
 <h3>Authors or Acknowledgments</h3>
 <ul>
-  <li>Vladimir Carrer</li>
+  <li>Youness Id bakkasse</li>
+  <li>Oumaïma Chetouani</li>
+  <li>Yassine Bentot</li>
+  <li>Maxence Nho</li>
+  <li>Naïm Imrane Kayodé Lawani</li>
 </ul>
 
 <h3>License</h3>
-
-This project is licensed under the MIT License
+This project is licensed under the MIT License, so feel free to use it and if you have any question don't hesitate contacting me via : std.youness@gmail.com
