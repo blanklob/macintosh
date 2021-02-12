@@ -5,9 +5,9 @@
 <p align="center"><img src="/assets/icons/1.png" /></p>
 
 <p float="left">
-  <img src="/assets/icons/2.pngg" width="100" />
-  <img src="/assets/icons/3.png" width="100" /> 
-  <img src="/assets/icons/4.png" width="100" />
+  <img src="/assets/icons/2.png" width="300" />
+  <img src="/assets/icons/3.png" width="300" /> 
+  <img src="/assets/icons/4.png" width="300" />
 </p>
 
 <hr/>
