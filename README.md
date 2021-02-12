@@ -1,4 +1,4 @@
-<p align="center"><img src="logo.png" /></p>
+<p align="center"><img src="/assets/icons/1.png" /></p>
 
 <h1 align="center"> Project Macintosh 128K</h1>
 
