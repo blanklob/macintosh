@@ -527,10 +527,6 @@ main {
     width: 44rem;
 }
 
-#line {
-    animation: hideandshow 1.5s infinite;
-}
-
 .calc-title, .puzzle-title {
     color: var(--white);
     position: absolute;
@@ -593,11 +589,10 @@ main {
     background: var(--black);
 }
 
-.control .control-panel > svg {
+.control .control-panel img {
     position: relative;
-    top: -5.5rem;
+    top: -3.4rem;
     left: -.6rem;
-    height: 40rem;
     width: 45rem;
 }
 
