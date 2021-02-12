@@ -429,7 +429,6 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
 
 
 // Snake App -------------------------------------
-
 (function(){  
     // Snake Properties
     var snake,
@@ -619,16 +618,6 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
     // Event listeners for both newgale btns
     btnNewgame.onclick = function(){newGame();};
     btnGameOver.onclick = function(){newGame();}; 
-    
-    // Ability to start the game using space keyboard btn (hidden feature)
-    document.onkeydown = (evt) => {
-        if(screenGameOver.style.display == "block"){
-            evt = evt || window.event;
-            if(evt.keyCode == 32){
-                newGame();
-            };
-        };
-    };
 })();
 // End Snake App ---------------------------------------
 
