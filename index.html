@@ -799,16 +799,22 @@
                     </button>
                 </div>
                 <div class="window-body">
-                    <div id="snake-menu" class="snake-game vh-align">
-                        <h2 class="game-title">Snake</h2>
-                        <div class="game-menu">
-                            <a class="start-game">New Game</a>
-                        </div> 
+                    <header class="wrap">
+                        <p class="score">Score: <span id="score_value">0</span></p>
+                    </header>
+                    <canvas class="wrap" id="snake-canvas" width="320" height="320" tabindex="1"></canvas>
+                
+                    <!-- Game Over Screen -->
+                    <div id="gameover">
+                        <h2>Game Over</h2>
+                        <p>press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin a</p>
+                        <a id="newgame_gameover">new game</a>
                     </div>
-                    <div class="game-score">score: 0</div>   
-                    <canvas id="snake-canvas">
-                        Sorry, your web browser deos not support Canvas, You might wanna switch to a newer version. 
-                    </canvas>
+                    <!-- Main Menu Screen -->
+                    <div id="snake-menu">
+                        <h2>Snake</h2>
+                        <a id="newgame_menu">new game</a>
+                    </div>
                 </div>
             </section>
             <!-- Calculator App -->

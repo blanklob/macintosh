@@ -237,11 +237,6 @@ search.run();
 files.run()
 list.run();
 
-setInterval(() => {
-    console.log(paint.window.offsetLeft);
-    console.log(paint.window.offsetTop);
-}, 2000);
-
 // Full screen mode
 // when we click menu item in the view dropdow menu we change to full screen mode 
 const fullScreen = document.getElementById('full-screen');
@@ -307,8 +302,8 @@ const switcher = document.querySelector('.icon.switch');
 // Now the HARDCORE Stuff HTML5 CANVAS
 // Paint App -------------------------------------
 // we create a paint canvas 
-const canvas = document.getElementById('paint-canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('paint-canvas'),
+ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -432,79 +427,44 @@ canvas.addEventListener('mouseup', (e) => {
 canvas.addEventListener('mouseout', () => (isDrawing = false));
 // End Paint App -------------------------------------
 
+
 // Snake App -------------------------------------
-// Creating the canvas
-// HTML elements
-const snakeCanvas = document.getElementById('snake-canvas'),
-    snakeCtx = snakeCanvas.getContext('2d'),
-    snakeMenu = document.getElementById('snake-menu'),
-    snakeScore = document.querySelector('.game-score'),
-    startBtn = document.querySelector('.start-game');
-
-// setup the canvas for the snake game
-snakeCanvas.width = window.innerWidth;
-snakeCanvas.height = window.innerHeight;
-// Creating the game grid 20*20
-var canvasRows = snakeCanvas.height/20,
-canvasColumns = snakeCanvas.width/20;
-// Starting the game 
-startBtn.addEventListener('click', (e)=>{
-    // We hide the menu and display the canvas 
-    showScreen(0);
-    // We create a snake for the player
-    var snakeGame = new Snake();
-    // Refresh the screen every now and then
-    window.setInterval(() => {
-        snakeGame.draw();     
-     }, 100);   
-});
-
-
-// 0 for the snake game
-// 1 for the main menu
-var showScreen = (opt) => {
-    switch(opt){
-        case 0:  
-            snakeCanvas.style.display = "block";
-            snakeMenu.style.display = "none";
-            break;
-
-        case 1:  
-            snakeCanvas.style.display = "none";
-            snakeMenu.style.display = "block";
-            break;
-    };
-};
-
-
-
-
-
-
 
 (function(){  
-    /////////////////////////////////////////////////////////////
-    
-    // Snake 
+    // Snake Properties
     var snake,
     snakeDir,
 	snakeNextDir,
-    snakeSpeed,
-    
-    // Food
+    snakeSpeed = 200,
+    // Food object
     food = {x: 0, y: 0},
     
-    // Score
-    score = 0,
+    // Creating the snake canvas and selecting html nodes
+    snakeCanvas = document.getElementById("snake-canvas"),
+    ctx = snakeCanvas.getContext("2d"),
 
-    // unknown
-    activeDot = (x, y) => {
+    // We only have two screens gameover and new game screens
+    screenMenu = document.getElementById("snake-menu"),
+    screenGameOver = document.getElementById("gameover"),
+
+    // Selecing both new game btns in the two gameover and new game screens
+    btnNewgame = document.getElementById("newgame_menu"),
+    btnGameOver = document.getElementById("newgame_gameover"),
+
+    // Score
+    score,
+    // Selecting the score element 
+    scoreEl = document.getElementById("score_value");
+    
+    // Drawing the rectangles for both snake and the food
+    var draw = (x, y) => {
         ctx.fillStyle = "#000";
         ctx.fillRect(x * 10, y * 10, 10, 10);
     };
-    
-    // Change snake direction when arrow btns were clicked
+
+    // Changing snake directions depending on keyboard events
     var changeDir = (key) => {
+        // Keyboard ascii codes !! 
         if(key == 38 && snakeDir != 2){
             snakeNextDir = 0;
         } else {
@@ -516,176 +476,162 @@ var showScreen = (opt) => {
                 } else {
                     if(key == 37 && snakeDir != 1){
                         snakeNextDir = 3;
-                    };
-                };
-            };
-        };
-    };
-    
-    // Generating food randomly within the canvas
+    }; }; }; };};
+
+    // Adding food rects randomly when there is no food
     var addFood = () => {
-        food.x = Math.floor(Math.random() * ((canvas.width / 10) - 1));
-        food.y = Math.floor(Math.random() * ((canvas.height / 10) - 1));
+        food.x = Math.floor(Math.random() * ((snakeCanvas.width / 10) - 1));
+        food.y = Math.floor(Math.random() * ((snakeCanvas.height / 10) - 1));
         for(var i = 0; i < snake.length; i++){
             if(checkBlock(food.x, food.y, snake[i].x, snake[i].y)){
                 addFood();
             };
         };
     };
-
+    
     // Check if snake eat food aka check if snake coords are the same as food ones.
     var checkBlock = (x, y, _x, _y) => {
         return (x == _x && y == _y) ? true : false;
     };
-    
-    // Update the snake game score 
+
+    // Update the snake game score    
     var altScore = (scoreVal) => {
-        snakeScore.innerHTML = String(scoreVal);
+        scoreEl.innerHTML = String(scoreVal);
     };
     
-    // The main game loop
     var mainLoop = () => {
-        var _x = snake[0].x;
-        var _y = snake[0].y;
-        // We get the next direction from the changeDir function above 
-        snakeDir = snakeNextDir;
+            var _x = snake[0].x;
+            var _y = snake[0].y;
+            // We get the next direction from the changeDir function above 
+			snakeDir = snakeNextDir;
 
-        // 0 - Up, 1 - Right, 2 - Down, 3 - Left
-        switch(snakeDir){
-            case 0: _y--; break;
-            case 1: _x++; break;
-            case 2: _y++; break;
-            case 3: _x--; break;
-        };
+            // 0 - Up, 1 - Right, 2 - Down, 3 - Left
+            switch(snakeDir){
+                case 0: _y--; break;
+                case 1: _x++; break;
+                case 2: _y++; break;
+                case 3: _x--; break;
+            };
 
-        // 
-        snake.pop();
-        snake.unshift({x: _x, y: _y});
+            // CHanging direction
+            snake.pop();
+            snake.unshift({x: _x, y: _y});
 
-        // When snake hits the wall
-        if (snake[0].x < 0 || snake[0].x == canvas.width / 10 || snake[0].y < 0 || snake[0].y == canvas.height / 10){
-            showScreen(1);
-            return;
-        }
+            // When snake hits the wall
+            if (snake[0].x < 0 || snake[0].x == snakeCanvas.width / 10 || snake[0].y < 0 || snake[0].y == snakeCanvas.height / 10){
+                showScreen(2);
+                // getting out of the loop (the function)
+                return;
+            };
             
-        // When snke eats himself
+        // When snake eats himself
         for(var i = 1; i < snake.length; i++){
             if (snake[0].x == snake[i].x && snake[0].y == snake[i].y){
-                showScreen(1);
+                // Show the game over screen
+                showScreen(2);
+                // getting out of the loop (the function)
                 return;
             };
         };
-              
-        // When snake eats food
+        
+        // When snake eats food (if snake.x && snake.y === food.x && food.y)
         if(checkBlock(snake[0].x, snake[0].y, food.x, food.y)){
             snake[snake.length] = {x: snake[0].x, y: snake[0].y};
             score += 1;
             altScore(score);
             addFood();
-            activeDot(food.x, food.y);
+            draw(food.x, food.y);
         };
         
-        // Clear the screen so the snake will give a moving effect
+        // Clearing the canvas 
         ctx.beginPath();
-        ctx.fillStyle = "#000";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // unknown
-        for(var i = 0; i < snake.length; i++){
-            activeDot(snake[i].x, snake[i].y);
-        }
-        
-        // unknwon
-        activeDot(food.x, food.y);
-        // THE LOOP TRIGGER
-        setTimeout(mainLoop, snake_speed);
-    };
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
     
+        // Drawing all the snake parts 
+        for(var i = 0; i < snake.length; i++){
+            draw(snake[i].x, snake[i].y);
+        };
+    
+        // Drawing the foos 
+        draw(food.x, food.y);
 
-    var newGame = function(){
-        
+        // main loop
+        setTimeout(mainLoop, snakeSpeed);
+    };
+
+    /* Before every new game we have to reset some stuff like the score, the snake, 
+    it's direction...
+    */
+    var newGame = () => { 
         showScreen(0);
-        screen_snake.focus();
+        snakeCanvas.focus();
       
+        // Reset the snake parts to an empty array
         snake = [];
+        // Creating the baby snake
         for(var i = 4; i >= 0; i--){
             snake.push({x: i, y: 15});
-        }
+        };
       
-        snake_next_dir = 1;
+        // Initial direction
+        snakeNextDir = 1;
         
+        // Reset the score and update the score element
         score = 0;
         altScore(score);
         
+        // Adding food 
         addFood();
-        
-        canvas.onkeydown = function(evt) {
-            evt = evt || window.event;
-            changeDir(evt.keyCode);
-        }
-        mainLoop();
+
+        // Get keyboard direction codes 
+        snakeCanvas.onkeydown = (e) => {
+            e = e || window.event;
+            changeDir(e.keyCode);
+        };
+        // Run the freaking game
+        mainLoop();         
+    };
+
+    // 0 for the game
+    // 1 for the main menu
+    // 2 for the game over screen
+    var showScreen = (screen_opt) => {
+        switch(screen_opt){  
+            case 0:  snakeCanvas.style.display = "block";
+                     screenMenu.style.display = "none";
+                     screenGameOver.style.display = "none";
+                     break;
                 
-    }
-    
-    /////////////////////////////////////////////////////////////
+            case 1:  snakeCanvas.style.display = "none";
+                     screenMenu.style.display = "block";
+                     
+                     screenGameOver.style.display = "none";
+                     break; 
 
+            case 2: snakeCanvas.style.display = "none";
+                    screenMenu.style.display = "none";
+                    screenGameOver.style.display = "block";
+                    break;
+        };
+    };
      
-   
-        
-    /////////////////////////////////////////////////////////////
-        
-    window.onload = function(){
-        
-        canvas = document.getElementById("snake");
-        ctx = canvas.getContext("2d");
-               
-            // Screens
-            screen_snake = document.getElementById("snake");
-            screen_menu = document.getElementById("menu");
-            screen_gameover = document.getElementById("gameover");
-            screen_setting = document.getElementById("setting");
-        
-            // Buttons
-            button_newgame_menu = document.getElementById("newgame_menu");
-            button_newgame_setting = document.getElementById("newgame_setting");
-            button_newgame_gameover = document.getElementById("newgame_gameover");
-            button_setting_menu = document.getElementById("setting_menu");
-            button_setting_gameover = document.getElementById("setting_gameover");
-        
-            // etc
-            ele_score = document.getElementById("score_value");
-            speed_setting = document.getElementsByName("speed");
-            wall_setting = document.getElementsByName("wall");
-        
-        // --------------------
-
-        button_newgame_menu.onclick = function(){newGame();};
-        button_newgame_gameover.onclick = function(){newGame();}; 
-        button_newgame_setting.onclick = function(){newGame();}; 
-        button_setting_menu.onclick = function(){showScreen(2);};
-        button_setting_gameover.onclick = function(){showScreen(2)};
-
-
-        showScreen("menu");
-    }
-
+    // Event listeners for both newgale btns
+    btnNewgame.onclick = function(){newGame();};
+    btnGameOver.onclick = function(){newGame();}; 
+    
+    // Ability to start the game using space keyboard btn (hidden feature)
+    document.onkeydown = (evt) => {
+        if(screenGameOver.style.display == "block"){
+            evt = evt || window.event;
+            if(evt.keyCode == 32){
+                newGame();
+            };
+        };
+    };
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // End Snake App ---------------------------------------
+
 
 // Calculator App -----------------------------------
 var display = document.getElementById('calc-res'), // input/output button
