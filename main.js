@@ -434,11 +434,12 @@ canvas.addEventListener('mouseout', () => (isDrawing = false));
 
 // Snake App -------------------------------------
 // Creating the canvas
+// HTML elements
 const snakeCanvas = document.getElementById('snake-canvas'),
     snakeCtx = snakeCanvas.getContext('2d'),
-    gameMenu = document.getElementById('snake-menu'),
-    startBtn = document.querySelector('.start-game'),
-    settingsBtn = document.querySelector('.game-settings');
+    snakeMenu = document.getElementById('snake-menu'),
+    snakeScore = document.querySelector('.game-score'),
+    startBtn = document.querySelector('.start-game');
 
 // setup the canvas for the snake game
 snakeCanvas.width = window.innerWidth;
@@ -446,7 +447,6 @@ snakeCanvas.height = window.innerHeight;
 // Creating the game grid 20*20
 var canvasRows = snakeCanvas.height/20,
 canvasColumns = snakeCanvas.width/20;
-console.log(gameMenu)
 // Starting the game 
 startBtn.addEventListener('click', (e)=>{
     // We hide the menu and display the canvas 
@@ -466,15 +466,225 @@ var showScreen = (opt) => {
     switch(opt){
         case 0:  
             snakeCanvas.style.display = "block";
-            gameMenu.style.display = "none";
+            snakeMenu.style.display = "none";
             break;
 
         case 1:  
             snakeCanvas.style.display = "none";
-            gameMenu.style.display = "block";
+            snakeMenu.style.display = "block";
             break;
     };
 };
+
+
+
+
+
+
+
+(function(){  
+    /////////////////////////////////////////////////////////////
+    
+    // Snake 
+    var snake,
+    snakeDir,
+	snakeNextDir,
+    snakeSpeed,
+    
+    // Food
+    food = {x: 0, y: 0},
+    
+    // Score
+    score = 0,
+
+    // unknown
+    activeDot = (x, y) => {
+        ctx.fillStyle = "#000";
+        ctx.fillRect(x * 10, y * 10, 10, 10);
+    };
+    
+    // Change snake direction when arrow btns were clicked
+    var changeDir = (key) => {
+        if(key == 38 && snakeDir != 2){
+            snakeNextDir = 0;
+        } else {
+            if (key == 39 && snakeDir != 3){
+                snakeNextDir = 1;
+            } else {
+                if (key == 40 && snakeDir != 0){
+                    snakeNextDir = 2;
+                } else {
+                    if(key == 37 && snakeDir != 1){
+                        snakeNextDir = 3;
+                    };
+                };
+            };
+        };
+    };
+    
+    // Generating food randomly within the canvas
+    var addFood = () => {
+        food.x = Math.floor(Math.random() * ((canvas.width / 10) - 1));
+        food.y = Math.floor(Math.random() * ((canvas.height / 10) - 1));
+        for(var i = 0; i < snake.length; i++){
+            if(checkBlock(food.x, food.y, snake[i].x, snake[i].y)){
+                addFood();
+            };
+        };
+    };
+
+    // Check if snake eat food aka check if snake coords are the same as food ones.
+    var checkBlock = (x, y, _x, _y) => {
+        return (x == _x && y == _y) ? true : false;
+    };
+    
+    // Update the snake game score 
+    var altScore = (scoreVal) => {
+        snakeScore.innerHTML = String(scoreVal);
+    };
+    
+    // The main game loop
+    var mainLoop = () => {
+        var _x = snake[0].x;
+        var _y = snake[0].y;
+        // We get the next direction from the changeDir function above 
+        snakeDir = snakeNextDir;
+
+        // 0 - Up, 1 - Right, 2 - Down, 3 - Left
+        switch(snakeDir){
+            case 0: _y--; break;
+            case 1: _x++; break;
+            case 2: _y++; break;
+            case 3: _x--; break;
+        };
+
+        // 
+        snake.pop();
+        snake.unshift({x: _x, y: _y});
+
+        // When snake hits the wall
+        if (snake[0].x < 0 || snake[0].x == canvas.width / 10 || snake[0].y < 0 || snake[0].y == canvas.height / 10){
+            showScreen(1);
+            return;
+        }
+            
+        // When snke eats himself
+        for(var i = 1; i < snake.length; i++){
+            if (snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+                showScreen(1);
+                return;
+            };
+        };
+              
+        // When snake eats food
+        if(checkBlock(snake[0].x, snake[0].y, food.x, food.y)){
+            snake[snake.length] = {x: snake[0].x, y: snake[0].y};
+            score += 1;
+            altScore(score);
+            addFood();
+            activeDot(food.x, food.y);
+        };
+        
+        // Clear the screen so the snake will give a moving effect
+        ctx.beginPath();
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // unknown
+        for(var i = 0; i < snake.length; i++){
+            activeDot(snake[i].x, snake[i].y);
+        }
+        
+        // unknwon
+        activeDot(food.x, food.y);
+        // THE LOOP TRIGGER
+        setTimeout(mainLoop, snake_speed);
+    };
+    
+
+    var newGame = function(){
+        
+        showScreen(0);
+        screen_snake.focus();
+      
+        snake = [];
+        for(var i = 4; i >= 0; i--){
+            snake.push({x: i, y: 15});
+        }
+      
+        snake_next_dir = 1;
+        
+        score = 0;
+        altScore(score);
+        
+        addFood();
+        
+        canvas.onkeydown = function(evt) {
+            evt = evt || window.event;
+            changeDir(evt.keyCode);
+        }
+        mainLoop();
+                
+    }
+    
+    /////////////////////////////////////////////////////////////
+
+     
+   
+        
+    /////////////////////////////////////////////////////////////
+        
+    window.onload = function(){
+        
+        canvas = document.getElementById("snake");
+        ctx = canvas.getContext("2d");
+               
+            // Screens
+            screen_snake = document.getElementById("snake");
+            screen_menu = document.getElementById("menu");
+            screen_gameover = document.getElementById("gameover");
+            screen_setting = document.getElementById("setting");
+        
+            // Buttons
+            button_newgame_menu = document.getElementById("newgame_menu");
+            button_newgame_setting = document.getElementById("newgame_setting");
+            button_newgame_gameover = document.getElementById("newgame_gameover");
+            button_setting_menu = document.getElementById("setting_menu");
+            button_setting_gameover = document.getElementById("setting_gameover");
+        
+            // etc
+            ele_score = document.getElementById("score_value");
+            speed_setting = document.getElementsByName("speed");
+            wall_setting = document.getElementsByName("wall");
+        
+        // --------------------
+
+        button_newgame_menu.onclick = function(){newGame();};
+        button_newgame_gameover.onclick = function(){newGame();}; 
+        button_newgame_setting.onclick = function(){newGame();}; 
+        button_setting_menu.onclick = function(){showScreen(2);};
+        button_setting_gameover.onclick = function(){showScreen(2)};
+
+
+        showScreen("menu");
+    }
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // End Snake App ---------------------------------------
 
 // Calculator App -----------------------------------
