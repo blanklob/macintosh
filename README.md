@@ -5,9 +5,9 @@
 <p align="center"><img src="/assets/icons/1.png" /></p>
 
 <p float="left">
-  <img src="/assets/icons/2.png" width="250" />
-  <img src="/assets/icons/3.png" width="250" /> 
-  <img src="/assets/icons/4.png" width="250" />
+  <img src="/assets/icons/2.png" width="270" />
+  <img src="/assets/icons/3.png" width="270" /> 
+  <img src="/assets/icons/4.png" width="270" />
 </p>
 
 <hr/>
@@ -36,7 +36,7 @@ git clone https://github.com/younessidbakkasse/ProjectMacintosh
   <li>Youness Id bakkasse : User Interface / MacPaint</li>
   <li>Oumaïma Chetouani : Menu Navigation / Clock</li>
   <li>Yassine Bentot : Calculator </li>
-  <li>Maxence Nho : Designer UI</li>
+  <li>Maxence Nho : Menu Navigation and Icons</li>
   <li>Naïm Imrane Kayodé Lawani : The Snake</li>
   <li>Matthias Courbon : Blackjack </li>
 </ul>
