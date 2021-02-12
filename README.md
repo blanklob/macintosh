@@ -5,16 +5,14 @@
 <p align="center"><img src="/assets/icons/1.png" /></p>
 
 <p float="left">
-  <img src="/assets/icons/2.png" width="300" />
-  <img src="/assets/icons/3.png" width="300" /> 
-  <img src="/assets/icons/4.png" width="300" />
+  <img src="/assets/icons/2.png" width="250" />
+  <img src="/assets/icons/3.png" width="250" /> 
+  <img src="/assets/icons/4.png" width="250" />
 </p>
 
 <hr/>
 
 <p> This project was made for people who want to experience the classic Mac released by Apple in 1984, the Macintosh changed the hardware industry it was one of the major personnal computers that marked the microcomputers era with a well made user interface for better UX. </p>
-
-<h4> Check the website <a href="https://macintosh.netlify.app/" target="_blank">here</a></h4>
 
 <h3> Project Macintosh Apps </h3>
 
@@ -23,6 +21,7 @@
   <li>Calculator</li>
   <li>Snake</li>
   <li>Mac UI</li>
+  <h4> Check the website <a href="https://macintosh.netlify.app/" target="_blank">here</a></h4>
 </ul>
 
 <h3> Download </h3>
