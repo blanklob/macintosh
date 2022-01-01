@@ -1,6 +1,6 @@
-<h1 align="center"> Project Macintosh 128K</h1>
+# Magnesium
 
-<p align="center"> Experience how deos computer's User Interface look like back in the 80s, all in your Web Browser.</p>
+> Experience how deos computer's User Interface look like back in the 80s, all in your Web Browser.
 
 <p align="center"><img src="/assets/icons/1.png" /></p>
 
@@ -14,22 +14,15 @@
 
 <p> This project was made for people who want to experience the classic Mac released by Apple in 1984, the Macintosh changed the hardware industry it was one of the major personnal computers that marked the microcomputers era with a well made user interface for better UX. </p>
 
-<h3> Project Macintosh Apps </h3>
+<h3> The Macintosh Apps </h3>
 
 <ul>
   <li>MacPaint</li>
   <li>Calculator</li>
   <li>Snake</li>
   <li>Mac UI</li>
-  <h4> Check the website <a href="https://macintosh.netlify.app/" target="_blank">here</a></h4>
+  <h4> Check the website <a href="https://magnesium.younessidbakkasse.com/" target="_blank">here</a></h4>
 </ul>
-
-<h3> Download </h3>
-Start your terminal and type
-
-```shell
-git clone https://github.com/younessidbakkasse/ProjectMacintosh
-```
 
 <h3>Authors or Acknowledgments</h3>
 <ul>
@@ -40,7 +33,3 @@ git clone https://github.com/younessidbakkasse/ProjectMacintosh
   <li>Naïm Imrane Kayodé Lawani : The Snake</li>
   <li>Matthias Courbon : Blackjack </li>
 </ul>
-
-<h3>License</h3>
-
-This project is licensed under the MIT License, so feel free to use it and if you have any question don't hesitate contacting me via : std.youness@gmail.com
