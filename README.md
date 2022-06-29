@@ -21,7 +21,7 @@
   <li>Calculator</li>
   <li>Snake</li>
   <li>Mac UI</li>
-  <h4> Check the website <a href="https://magnesium.idbakkasse.com/" target="_blank">here</a></h4>
+ 
 </ul>
 
 <h3>Authors or Acknowledgments</h3>
